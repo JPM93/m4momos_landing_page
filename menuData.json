@@ -1,0 +1,116 @@
+{
+  "menu": [
+    {
+      "img": "./assets/veg_momos.png",
+      "alt": "Veg Momos",
+      "title": "Veg Momos",
+      "desc": "Fresh vegetables wrapped in soft dough, steamed to perfection.",
+      "price": "₹59 (6 pcs)"
+    },
+    {
+      "img": "./assets/chicken_momos.webp",
+      "alt": "Chicken Momos",
+      "title": "Chicken Momos",
+      "desc": "Juicy chicken filling with spices, a crowd favorite.",
+      "price": "₹79 (6 pcs)"
+    },
+    {
+      "img": "./assets/panner_momos.png",
+      "alt": "Paneer Momos",
+      "title": "Paneer Momos",
+      "desc": "",
+      "price": "₹79 (6 pcs)"
+    },
+    {
+      "img": "./assets/panner_momos.png",
+      "alt": "Paneer & Chees Momos",
+      "title": "Paneer Chees Momos",
+      "desc": "",
+      "price": "₹99 (6 pcs)"
+    },
+    {
+      "img": "./assets/8.webp",
+      "alt": "Chicken & Chees Momos",
+      "title": "Chicken Chees Momos",
+      "desc": "",
+      "price": "₹99 (6 pcs)"
+    },
+    {
+      "img": "./assets/corn_and_mashroom_momos.png",
+      "alt": "Corn & Mashroom Momos",
+      "title": "Corn + Mashroom & Cheese Momos",
+      "desc": "",
+      "price": "₹99 (6 pcs)"
+    },
+    {
+      "img": "./assets/big_momos.png",
+      "alt": "Veg Big Momos",
+      "title": "Veg Big Momos (apx: 200-275gm)",
+      "desc": "Oversized momos packed with flavor – perfect for sharing!",
+      "price": "₹129 (3 pc)"
+    },
+    {
+      "img": "./assets/1.png",
+      "alt": "Non-Veg Big Momos",
+      "title": "Non-Veg Big Momos (apx: 200-275gm)",
+      "desc": "Oversized momos packed with flavor – perfect for sharing!",
+      "price": "₹159 (3 pc)"
+    },
+    {
+      "img": "./assets/2.png",
+      "alt": "Big Momos Combo",
+      "title": "Big Momos Combo (Veg & Non-Veg) (apx: 150-175gm)",
+      "desc": "Oversized momos packed with flavor – perfect for sharing!",
+      "price": "₹99 (2 pc)"
+    }
+  ],
+  "specials": [
+    {
+      "img": "./assets/chciken_biryani.png",
+      "alt": "Chicken Biryani",
+      "title": "Weekend Special: Chicken Biryani",
+      "desc": "Aromatic basmati rice layered with tender chicken and spices. Available only on weekends.",
+      "price": "₹249 (Full Plate)"
+    },
+    {
+      "img": "./assets/7.png",
+      "alt": "Weekday Specials",
+      "title": "Weekday Specials",
+      "desc": "Available Sunday & Monday. Choose from:",
+      "list": [
+        "Chicken Tangri: ₹99 (2 pc)",
+        "Chicken Wings: ₹149 (10 pc)",
+        "Chicken Leg Piece: ₹199 (2 pc)"
+      ]
+    },
+    {
+      "img": "./assets/3.webp",
+      "alt": "Weekday Specials",
+      "title": "Weekday Specials",
+      "desc": "Available Only on Wednesday Choose from:",
+      "list": [
+        "Veg Manchurian Dry: ₹149 (10 pc)",
+        "Veg Manchurian Gravy: ₹179 (10 pc)"
+      ]
+    },
+	{
+		
+      "img": "./assets/6.webp",
+      "alt": "Weekday Specials",
+      "title": "Weekday Specials",
+      "desc": "Available Thersday & Friday. Choose from:",
+      "list": [
+        "Margherita Classic: ₹199",
+        "Cheezy-7 Overload: ₹279",
+        "Paneer Tikka Delight: ₹249",
+        "Farm Fresh Veggie: ₹239",
+        "Chicken Feast Supreme: ₹299",
+        "Mexican Jalapeño Burst: ₹269",
+        "Corn & Cheese Lover: ₹219",
+        "Mushroom & Paprika Special: ₹229",
+        "Trio Pepper Blast: ₹239",
+        "Cherry Tomato Basil Touch: ₹229"
+      ]
+    }
+  ]
+}
