@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>
+		M4 Momos - Delicious Momos and Specials
+	</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        .hero {
+            background-image: url('./assets/banner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .menu-card {
+            transition: transform 0.3s;
+        }
+        .menu-card:hover {
+            transform: scale(1.05);
+        }
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+
+<!-- Hero Section -->
+<header class="hero py-24 text-center">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+			M4 Momos
+		</h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-6">
+			Savor the Best Momos in Town – Big, Bold, and Always Fresh!
+		</p>
+        <a href="#menu" class="bg-white text-black px-6 py-3 rounded-full text-lg hover:bg-gray-200">
+			Explore Our Menu
+		</a>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav class="bg-gray-800 text-white sticky top-0 z-10">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold">M4 Momos</a>
+        <div class="space-x-4 hidden md:flex">
+            <a href="#home" class="hover:text-gray-300">Home</a>
+            <a href="#menu" class="hover:text-gray-300">Menu</a>
+            <a href="#specials" class="hover:text-gray-300">Specials</a>
+            <a href="#contact" class="hover:text-gray-300">Contact</a>
+        </div>
+        <button class="md:hidden focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white">
+        <a href="#home" class="block px-4 py-2 hover:bg-gray-700">Home</a>
+        <a href="#menu" class="block px-4 py-2 hover:bg-gray-700">Menu</a>
+        <a href="#specials" class="block px-4 py-2 hover:bg-gray-700">Specials</a>
+        <a href="#contact" class="block px-4 py-2 hover:bg-gray-700">Contact</a>
+    </div>
+</nav>
+
+<!-- Menu Section -->
+<section id="menu" class="py-12">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
+			Varieties of Momos
+		</h2>
+        <p class="text-lg text-center mb-10">
+			Our momos are available daily. Try our special Big Momos (225-250gm) for a hearty treat!
+		</p>
+        <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+</section>
+
+<!-- Specials Section -->
+<section id="specials" class="py-12 bg-gray-200">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
+			Weekly Specials
+		</h2>
+        <div id="specials-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-12">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Get in Touch</h2>
+        <p class="text-lg mb-4">Visit us or order online! on Zomato & Swiggy</p>
+        <p class="text-lg"><i class="fas fa-map-marker-alt mr-2"></i>F-801, Himalaya Falaknuma, Juhapura, Ahmedabad</p>
+        <p class="text-lg"><i class="fas fa-phone mr-2"></i>+91-6353946486</p>
+        <p class="text-lg"><i class="fas fa-envelope mr-2"></i>info@m4momos.com</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-6 text-center">
+    <p>&copy; 2025 M4 Momos. All rights reserved.</p>
+</footer>
+
+<!-- JS to load JSON dynamically -->
+<script>
+    fetch('menuData.json')
+        .then(response => response.json())
+        .then(data => {
+            // Load Menu
+            const menuContainer = document.getElementById("menu-container");
+            data.menu.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "menu-card bg-white rounded-lg shadow-lg overflow-hidden";
+                card.innerHTML = `
+            <img src="${item.img}" alt="${item.alt}" class="h-48">
+            <div class="p-4 text-center">
+              <h3 class="text-xl font-semibold mb-2">${item.title}</h3>
+              <p class="text-gray-600 mb-2">${item.desc}</p>
+              <p class="font-bold text-lg">${item.price}</p>
+            </div>
+          `;
+                menuContainer.appendChild(card);
+            });
+
+            // Load Specials
+            const specialsContainer = document.getElementById("specials-container");
+            data.specials.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "menu-card bg-white rounded-lg shadow-lg overflow-hidden";
+
+                let content = `
+            <img src="${item.img}" alt="${item.alt}" class="h-48 md:h-64">
+            <div class="p-4 text-center">
+              <h3 class="text-xl font-semibold mb-2">${item.title}</h3>
+              <p class="text-gray-600 mb-2">${item.desc}</p>
+          `;
+
+                if (item.list) {
+                    content += `<ul class="text-gray-600 list-disc list-inside">`;
+                    item.list.forEach(li => content += `<li>${li}</li>`);
+                    content += `</ul>`;
+                } else {
+                    content += `<p class="font-bold text-lg">${item.price}</p>`;
+                }
+
+                content += `</div>`;
+                card.innerHTML = content;
+                specialsContainer.appendChild(card);
+            });
+        })
+        .catch(error => console.error('Error loading menu data:', error));
+</script>
+
+</body>
+</html>
