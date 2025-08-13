@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic Meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>
-		M4 Momos - Delicious Momos and Specials
-	</title>
+    <title>M4 Momos - Delicious Momos and Specials</title>
+    <meta name="description" content="M4 Momos – Big, bold, and always fresh! Enjoy the best momos in Ahmedabad, from juicy chicken momos to tasty vegetarian delights. Visit us or order online.">
+    <meta name="keywords" content="momos in ahmedabad, M4 Momos, best momos, big momos, vegetarian momos, chicken momos, momo specials">
+    <meta name="author" content="M4 Momos">
+
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:title" content="M4 Momos - Delicious Momos and Specials">
+    <meta property="og:description" content="Savor the best momos in Ahmedabad – Big, Bold, and Always Fresh!">
+    <meta property="og:image" content="https://m4momos.com/assets/banner.png">
+    <meta property="og:url" content="https://m4momos.com">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./favicon.png">
+
+    <!-- Tailwind & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <!-- Custom Styles -->
     <style>
         .hero {
             background-image: url('./assets/banner.png');
@@ -28,21 +44,42 @@
             height: 100%;
         }
     </style>
+
+    <!-- Structured Data (Local Business) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "M4 Momos",
+        "image": "https://m4momos.com/assets/banner.png",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "F-801, Himalaya Falaknuma, Juhapura",
+            "addressLocality": "Ahmedabad",
+            "addressRegion": "Gujarat",
+            "postalCode": "380055",
+            "addressCountry": "India"
+        },
+        "telephone": "+91-6353946486",
+        "servesCuisine": "Momos, Fast Food",
+        "url": "https://m4momos.com"
+    }
+    </script>
 </head>
 <body class="font-sans bg-gray-100">
 
 <!-- Hero Section -->
-<header class="hero py-24 text-center">
+<header class="hero py-24 text-center" id="home">
     <div class="container mx-auto px-4">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-			M4 Momos
-		</h1>
+            M4 Momos
+        </h1>
         <p class="text-lg md:text-xl lg:text-2xl mb-6">
-			Savor the Best Momos in Town – Big, Bold, and Always Fresh!
-		</p>
+            Savor the Best Momos in Town – Big, Bold, and Always Fresh!
+        </p>
         <a href="#menu" class="bg-white text-black px-6 py-3 rounded-full text-lg hover:bg-gray-200">
-			Explore Our Menu
-		</a>
+            Explore Our Menu
+        </a>
     </div>
 </header>
 
@@ -72,11 +109,11 @@
 <section id="menu" class="py-12">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
-			Varieties of Momos
-		</h2>
+            Varieties of Momos
+        </h2>
         <p class="text-lg text-center mb-10">
-			Our momos are available daily. Try our special Big Momos (225-250gm) for a hearty treat!
-		</p>
+            Our momos are available daily. Try our special Big Momos (225-250gm) for a hearty treat!
+        </p>
         <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </div>
 </section>
@@ -85,9 +122,19 @@
 <section id="specials" class="py-12 bg-gray-200">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
-			Weekly Specials
-		</h2>
+            Weekly Specials
+        </h2>
         <div id="specials-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </div>
+</section>
+
+<!-- Coming Soon Section -->
+<section class="py-12 bg-yellow-200">
+    <div class="container mx-auto px-4 text-center">
+        <div class="inline-block bg-yellow-400 text-black px-6 py-4 rounded-lg shadow-lg border-4 border-yellow-600">
+            <h3 class="text-2xl font-bold mb-2"><i class="fas fa-clock mr-2"></i>Coming Soon!</h3>
+            <p class="text-lg">Order on <strong>Zomato</strong> & <strong>Swiggy</strong> very soon</p>
+        </div>
     </div>
 </section>
 
