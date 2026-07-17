@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Shawarma Pita Bread • MFM V1.0</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫓</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a1814 0%, #1e1c18 100%);
+            min-height: 100vh;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-container {
+            max-width: 950px;
+            width: 100%;
+            background: #fdfaf3;
+            border-radius: 3rem 3rem 2.5rem 2.5rem;
+            box-shadow: 0 30px 50px rgba(139, 100, 43, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+            padding: 2rem 1.8rem;
+            border: 2px solid #d4a574;
+        }
+
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #8b6914;
+            text-shadow: 2px 2px 0 #fde68a;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subhead {
+            text-align: center;
+            color: #6b4f1d;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: #fef9e7;
+            display: inline-block;
+            padding: 0.3rem 1.8rem;
+            border-radius: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            font-size: 0.9rem;
+            border: 1px solid #e5b873;
+        }
+
+        .control-panel {
+            background: #1c1814;
+            border-radius: 2rem;
+            padding: 1.5rem 1.2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6), 0 10px 15px rgba(139, 100, 43, 0.3);
+            color: #f5f5f4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #292524;
+            padding: 0.5rem 1.2rem;
+            border-radius: 3rem;
+        }
+
+        .input-group label {
+            font-weight: 700;
+            color: #fde68a;
+            font-size: 1.2rem;
+        }
+
+        .input-group input {
+            width: 85px;
+            padding: 0.7rem 0.5rem;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: #fef7ed;
+            border: 2px solid #d4a574;
+            border-radius: 1.5rem;
+            color: #6b4f1d;
+            outline: none;
+        }
+
+        .btn {
+            background: linear-gradient(to bottom, #e5b873, #b8860b);
+            border: none;
+            color: #1c1814;
+            font-weight: 800;
+            padding: 0.75rem 1.8rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(184, 134, 11, 0.5);
+            border: 1px solid #fde68a;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to bottom, #d4a574, #8b6914);
+            transform: translateY(-1px);
+        }
+
+        .btn-settings {
+            background: #4b5563;
+            border-color: #9ca3af;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-settings:hover {
+            background: #6b7280;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1.5rem 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: #d6d3d1;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: #44403c;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .tab.active {
+            background: #8b6914;
+            color: white;
+            box-shadow: 0 0 18px #e5b873;
+        }
+
+        .tab.pita-active {
+            background: #6b4f1d;
+            box-shadow: 0 0 20px #d4a574;
+        }
+
+        .recipe-card {
+            background: #fffdf5;
+            border-radius: 2rem;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25);
+            border: 1px solid #e5b873;
+        }
+
+        .ingredient-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .ing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffffd6;
+            padding: 0.5rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #e5b873;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .ing-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .ing-name {
+            font-weight: 600;
+            color: #3b2f1e;
+            min-width: 130px;
+        }
+
+        .ing-qty {
+            font-weight: 800;
+            background: #fef9e7;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            color: #8b6914;
+            font-size: 0.85rem;
+        }
+
+        .ing-cost {
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 0.15rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.6rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            background: #d1d5db;
+            color: #374151;
+            border: 1px solid transparent;
+            margin-left: 0.3rem;
+        }
+
+        .status-badge.available {
+            background: #bbf7d0;
+            color: #166534;
+            border-color: #86efac;
+        }
+
+        .status-badge.not-available {
+            background: #fecaca;
+            color: #991b1b;
+            border-color: #fca5a5;
+        }
+
+        .cost-summary {
+            background: #fef9e7;
+            border: 2px solid #d4a574;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0;
+            font-weight: 600;
+            color: #6b4f1d;
+        }
+
+        .total-cost-box {
+            background: linear-gradient(135deg, #1c1814, #292524);
+            color: #e5b873;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            border: 2px solid #d4a574;
+        }
+
+        .step-container {
+            background: #fffdf5;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #e5b873;
+        }
+
+        .status-toggle-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .status-toggle-bar button {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 0.25rem 0.8rem;
+            border-radius: 1.5rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.6rem;
+            color: #8b6914;
+            border-left: 6px solid #d4a574;
+            padding-left: 0.8rem;
+            background: linear-gradient(to right, #fef9e7, transparent);
+        }
+
+        .tip-box {
+            background: #fef9e7;
+            border: 2px solid #d4a574;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+            color: #6b4f1d;
+        }
+
+        .method-box {
+            background: #fffdf5;
+            border: 2px solid #d4a574;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+        }
+
+        .method-box h3 {
+            color: #8b6914;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-box ol,
+        .method-box ul {
+            padding-left: 1.5rem;
+            color: #3b2f1e;
+        }
+
+        .method-box ol li,
+        .method-box ul li {
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+        }
+
+        .cooking-option {
+            background: #fffdf5;
+            border: 2px solid #e5b873;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin: 0.6rem 0;
+        }
+
+        .cooking-option h4 {
+            color: #8b6914;
+            margin-bottom: 0.3rem;
+        }
+
+        .size-guide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+
+        .size-item {
+            background: #fef9e7;
+            border: 1px solid #e5b873;
+            border-radius: 0.8rem;
+            padding: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #6b4f1d;
+            text-align: center;
+        }
+
+        .chef-tips {
+            background: #1c1814;
+            color: #e5b873;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+            border: 1px solid #d4a574;
+        }
+
+        .chef-tips ul {
+            padding-left: 1.2rem;
+        }
+
+        .chef-tips ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8b6914;
+            margin-top: 1rem;
+        }
+
+        .settings-modal {
+            scrollbar-width: thin;
+            scrollbar-color: #d4a574 #fef9e7;
+        }
+
+        .settings-modal::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .settings-modal::-webkit-scrollbar-track {
+            background: #fef9e7;
+            border-radius: 1rem;
+        }
+
+        .settings-modal::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #e5b873, #b8860b);
+            border-radius: 1rem;
+            border: 2px solid #fef9e7;
+        }
+
+        .settings-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .settings-overlay.open {
+            display: flex;
+        }
+
+        .settings-modal {
+            background: #fffdf5;
+            border-radius: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
+            border: 2px solid #d4a574;
+        }
+
+        .settings-modal h2 {
+            color: #8b6914;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #b91c1c;
+        }
+
+        .settings-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.7rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            align-items: center;
+            border: 1px solid #e5b873;
+        }
+
+        .item-name {
+            font-weight: 600;
+            flex: 1;
+            min-width: 160px;
+            color: #3b2f1e;
+        }
+
+        .settings-item input {
+            width: 85px;
+            padding: 0.4rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.8rem;
+            text-align: center;
+        }
+
+        .unit-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1c1814;
+            color: #e5b873;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            z-index: 9999;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <h1>🫓 SHAWARMA PITA BREAD</h1>
+        <div style="text-align:center"><span class="subhead">12 Pitas · ~88g each · Soft & Flavorful · Commercial
+                Grade</span></div>
+
+        <div class="control-panel">
+            <div class="input-group">
+                <label>🫓</label>
+                <input type="number" id="pitaBatches" value="1" min="1" max="10" step="1">
+                <span style="color:#fde68a; font-weight:bold;">Batch(es)</span>
+            </div>
+            <button class="btn" id="applyBtn"><span>🔄</span> Calculate</button>
+            <button class="btn btn-settings" id="settingsBtn">⚙️ Price Settings</button>
+        </div>
+
+        <div class="tabs" id="tabContainer">
+            <button id="tabFull" class="tab active pita-active">🫓 Full Recipe</button>
+            <button id="tabIngredients" class="tab">🍞 Ingredients</button>
+            <button id="tabMethod" class="tab">🔥 Method & Cooking</button>
+            <button id="tabGuide" class="tab">📏 Size & Tips</button>
+        </div>
+
+        <div id="dynamicRecipe" class="recipe-card"></div>
+        <div class="footer-note">⭐ 60 min proof · Tawa or Oven · Wrap in cloth · Freezer 30 days</div>
+    </div>
+
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <h2>⚙️ Ingredient Price Settings <button class="close-btn" id="closeSettings">✕</button></h2>
+            <div id="settingsList"></div>
+            <button class="btn" id="saveSettings" style="margin-top:1rem;">💾 Save & Apply</button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const BASE_BATCH = 1;
+            const PITAS_PER_BATCH = 12;
+            const DOUGH_PER_PITA = 88;
+
+            const dynamicDiv = document.getElementById('dynamicRecipe');
+            const qtyInput = document.getElementById('pitaBatches');
+            const settingsOverlay = document.getElementById('settingsOverlay');
+            const settingsList = document.getElementById('settingsList');
+
+            const PITA_INGREDIENTS = {
+                name: "🫓 Soft & Flavorful Shawarma Pita Bread",
+                items: [
+                    { name: "All-purpose Flour (Maida)", gram: 500 },
+                    { name: "Wheat Flour", gram: 100 },
+                    { name: "Instant Yeast", gram: 10 },
+                    { name: "Warm Milk", gram: 150 },
+                    { name: "Warm Water", gram: 160 },
+                    { name: "Sugar", gram: 15 },
+                    { name: "Honey", gram: 5 },
+                    { name: "Salt", gram: 10 },
+                    { name: "Olive Oil", gram: 20 },
+                    { name: "Melted Butter", gram: 20 },
+                    { name: "Thick Yogurt (Curd)", gram: 60 },
+                    { name: "Milk Powder", gram: 25 },
+                    { name: "Vital Wheat Gluten", gram: 12 },
+                    { name: "Nigella (Kalonji) / Sesame Seeds", gram: 5 },
+                    { name: "Butter (finishing brush)", gram: 15 }
+                ]
+            };
+
+            const ALL_INGREDIENTS = new Set();
+            PITA_INGREDIENTS.items.forEach(i => ALL_INGREDIENTS.add(i.name));
+
+            const SETTINGS_KEY = 'pita_bread_price_v1';
+            const PREP_KEY = 'pita_bread_prep_v1';
+            const STOCK_KEY = 'pita_bread_stock_v1';
+
+            function loadStore(k) { try { return JSON.parse(localStorage.getItem(k)) || {}; } catch (_) { return {}; } }
+            function saveStore(k, d) { localStorage.setItem(k, JSON.stringify(d)); }
+            let productSettings = loadStore(SETTINGS_KEY);
+            let prepStore = loadStore(PREP_KEY);
+            let stockStore = loadStore(STOCK_KEY);
+
+            const DEFAULTS = {
+                "All-purpose Flour (Maida)": [1000, 45, 40],
+                "Wheat Flour": [1000, 50, 45],
+                "Instant Yeast": [100, 55, 50],
+                "Warm Milk": [1000, 60, 56],
+                "Warm Water": [1000, 0, 0],
+                "Sugar": [1000, 50, 45],
+                "Honey": [250, 120, 110],
+                "Salt": [1000, 25, 22],
+                "Olive Oil": [200, 180, 165],
+                "Melted Butter": [500, 310, 282],
+                "Thick Yogurt (Curd)": [1000, 75, 68],
+                "Milk Powder": [500, 130, 118],
+                "Vital Wheat Gluten": [200, 95, 86],
+                "Nigella (Kalonji) / Sesame Seeds": [100, 40, 36],
+                "Butter (finishing brush)": [500, 310, 282]
+            };
+
+            for (let [k, v] of Object.entries(DEFAULTS)) {
+                if (!productSettings[k]) productSettings[k] = { packWeight: v[0], mrp: v[1], discounted: v[2] };
+            }
+            saveStore(SETTINGS_KEY, productSettings);
+
+            function storeKey(tab, item) { return tab + '::' + item; }
+            function getPrep(t, i) { return !!prepStore[storeKey(t, i)]; }
+            function setPrep(t, i, v) { prepStore[storeKey(t, i)] = v; saveStore(PREP_KEY, prepStore); }
+            function getStock(t, i) { return !!stockStore[storeKey(t, i)]; }
+            function setStock(t, i, v) { stockStore[storeKey(t, i)] = v; saveStore(STOCK_KEY, stockStore); }
+            function toggleStock(t, i) { setStock(t, i, !getStock(t, i)); }
+            function setAllPrep(t, items, v) { items.forEach(i => setPrep(t, i.name, v)); }
+            function setAllStock(t, items, v) { items.forEach(i => setStock(t, i.name, v)); }
+
+            function calc(item, g) {
+                let s = productSettings[item];
+                if (!s || !s.packWeight) return { mrp: 0, disc: 0 };
+                let pm = (s.mrp || 0) / s.packWeight, pd = (s.discounted || s.mrp || 0) / s.packWeight;
+                return { mrp: pm * g, disc: pd * g };
+            }
+            function scale(items, f) { return items.map(i => ({ ...i, gram: parseFloat((i.gram * f).toFixed(2)) })); }
+
+            let currentTab = 'full', currentBatches = 1;
+
+            function updateTabs(active) {
+                document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active', 'pita-active'); });
+                const tabMap = { full: 'tabFull', ingredients: 'tabIngredients', method: 'tabMethod', guide: 'tabGuide' };
+                let el = document.getElementById(tabMap[active]);
+                if (el) {
+                    el.classList.add('active');
+                    if (active === 'full') el.classList.add('pita-active');
+                }
+            }
+
+            function renderItemRow(item, tab) {
+                let prep = getPrep(tab, item.name), stock = getStock(tab, item.name);
+                let c = calc(item.name, item.gram);
+                return `<div class="ing-row"><div class="ing-left">
+        <input type="checkbox" class="ing-checkbox" data-item="${item.name}" data-tab="${tab}" ${prep ? 'checked' : ''}>
+        <span class="ing-name">🧾 ${item.name}</span>
+        <span class="status-badge ${stock ? 'available' : 'not-available'}" data-item="${item.name}" data-tab="${tab}">${stock ? '✅ In Stock' : '❌ Out'}</span>
+      </div><div style="display:flex;align-items:center;gap:0.5rem;">
+        <span class="ing-qty">${item.gram}g</span><span class="ing-cost">₹${c.disc.toFixed(2)}</span>
+      </div></div>`;
+            }
+
+            function attachEvents(container, tab, items) {
+                container.querySelectorAll('.ing-checkbox').forEach(cb => cb.addEventListener('change', function () {
+                    setPrep(this.dataset.tab, this.dataset.item, this.checked); renderContent(currentTab, currentBatches);
+                }));
+                container.querySelectorAll('.status-badge').forEach(b => b.addEventListener('click', function () {
+                    toggleStock(this.dataset.tab, this.dataset.item); renderContent(currentTab, currentBatches);
+                }));
+                ['mark-all-prep', 'clear-all-prep', 'mark-all-stock', 'clear-all-stock'].forEach(action => {
+                    container.querySelector(`[data-action="${action}"]`)?.addEventListener('click', () => {
+                        if (action === 'mark-all-prep') setAllPrep(tab, items, true);
+                        if (action === 'clear-all-prep') setAllPrep(tab, items, false);
+                        if (action === 'mark-all-stock') setAllStock(tab, items, true);
+                        if (action === 'clear-all-stock') setAllStock(tab, items, false);
+                        renderContent(currentTab, currentBatches);
+                    });
+                });
+            }
+
+            function renderFullRecipe(batches) {
+                let items = scale(PITA_INGREDIENTS.items, batches);
+                let d = 0, m = 0; items.forEach(i => { let c = calc(i.name, i.gram); d += c.disc; m += c.mrp; });
+                let totalPitas = PITAS_PER_BATCH * batches;
+
+                let html = `<h2>🫓 Soft & Flavorful Shawarma Pita Bread <span style="font-size:0.9rem; color:#6b7280;">(${totalPitas} pitas · ~${DOUGH_PER_PITA}g each)</span></h2>
+      <div class="status-toggle-bar">
+        <button data-action="mark-all-prep">✅ All collected</button>
+        <button data-action="clear-all-prep">❌ None collected</button>
+        <button data-action="mark-all-stock">📦 All in stock</button>
+        <button data-action="clear-all-stock">📦 All out of stock</button>
+      </div>
+
+      <div class="tip-box">
+        📌 <strong>NOTE:</strong> Garlic powder ko dough me add mat karo. Garlic flavor sauces se hi aayega.
+      </div>
+
+      <div class="section-title">🍞 Ingredients</div>
+      <div class="ingredient-list">`;
+                items.forEach(i => html += renderItemRow(i, 'pita'));
+                html += `</div>
+
+      <div class="cost-summary">
+        💰 Total Dough Cost: ₹${d.toFixed(2)} (MRP ₹${m.toFixed(2)})<br>
+        📐 Per Pita: ₹${(d / totalPitas).toFixed(2)} | Per Batch (12): ₹${(d / batches).toFixed(2)}
+      </div>
+
+      <div class="section-title">🔥 Method</div>
+      <div class="method-box">
+        <h3>STEP 1 – Activate Yeast (Skip if using Instant Yeast)</h3>
+        <p style="font-size:0.85rem;">Warm water me sugar aur yeast daalo. 8–10 minute tak foam aane do.</p>
+      </div>
+      <div class="method-box">
+        <h3>STEP 2 – Dough Banana</h3>
+        <ul>
+          <li>Ek bade bowl me mix karo: Maida, Salt, Milk Powder, Vital Wheat Gluten (agar use kar rahe ho)</li>
+          <li>Ab add karo: Yogurt, Warm Milk, Honey, Yeast mixture (ya Instant Yeast)</li>
+          <li>Thoda-thoda warm water add karte hue soft, slightly sticky dough banao.</li>
+          <li>Jab dough ek saath aa jaye tab Olive Oil, Melted Butter add karke 8–10 minute achhi tarah knead karo.</li>
+          <li>Dough smooth, soft aur elastic hona chahiye.</li>
+        </ul>
+      </div>
+      <div class="method-box">
+        <h3>STEP 3 – First Proof</h3>
+        <p style="font-size:0.85rem;">Dough ko halka oil laga kar bowl me rakho. Cover karo. 60 minute ya double hone tak rest do.</p>
+      </div>
+      <div class="method-box">
+        <h3>STEP 4 – Divide & Bench Rest</h3>
+        <p style="font-size:0.85rem;">Dough ko halka punch down karo. ${totalPitas} equal pieces (~${DOUGH_PER_PITA}g each) divide karo. Round balls bana lo. Cover karke 20 minute rest do. Ye step rolling ko bahut easy bana deta hai.</p>
+      </div>
+      <div class="method-box">
+        <h3>STEP 5 – Rolling</h3>
+        <p style="font-size:0.85rem;">Har dough ball ko 17–18 cm diameter, 4 mm thickness tak roll karo. Har stroke ke baad dough ko ¼ turn dete raho taaki perfect round shape aaye. Dry flour minimum use karo.</p>
+      </div>
+
+      <div class="section-title">🔥 Cooking Options</div>
+      <div class="cooking-option">
+        <h4>🍳 Option A – Tawa Method (Recommended)</h4>
+        <ul style="font-size:0.85rem;">
+          <li>Tawa ko Medium-High Heat par preheat karo.</li>
+          <li>Pita ko 30–40 sec pakao jab bubbles aane lagen.</li>
+          <li>Flip karo. Dusri side 30 sec pakao.</li>
+          <li>Zarurat ho to 5–8 sec direct flame par puff kara lo.</li>
+          <li>Dono taraf halki golden spots aur thoda char aana ideal hai.</li>
+        </ul>
+      </div>
+      <div class="cooking-option">
+        <h4>🔥 Option B – Oven Method</h4>
+        <ul style="font-size:0.85rem;">
+          <li>Oven ko 250°C par preheat karo.</li>
+          <li>Pita ko baking tray ya pizza stone par rakho.</li>
+          <li>4–5 minute bake karo jab tak puff ho jaye aur halka golden ho.</li>
+        </ul>
+      </div>
+      <div class="cooking-option">
+        <h4>🧈 Finishing</h4>
+        <p style="font-size:0.85rem;">Pita garam hote hi halka brush karo Melted Butter. Optional: Butter me 2–3 drops roasted sesame oil mila sakte ho Arabic bakery aroma ke liye.</p>
+      </div>
+
+      <div class="chef-tips">
+        <h4 style="color:#e5b873; margin-bottom:0.5rem;">⭐ Chef Tips</h4>
+        <ul>
+          <li>Dough slightly sticky hona chahiye; hard dough se pita dry banega.</li>
+          <li>Overcook mat karo, warna fold karte waqt toot sakta hai.</li>
+          <li>Pita ko hamesha cloth me wrap karke hi thanda hone do.</li>
+          <li>Shawarma banane se pehle pita ko 10–15 second tawa par reheat kar lo.</li>
+        </ul>
+      </div>
+
+      <div class="total-cost-box">
+        <div style="display:flex;justify-content:space-between;"><span>🎯 Total Cost (${totalPitas} pitas):</span><span style="font-size:1.4rem;">₹${d.toFixed(2)}</span></div>
+        <div style="display:flex;justify-content:space-between;"><span>📊 MRP Total:</span><span>₹${m.toFixed(2)}</span></div>
+        <div style="display:flex;justify-content:space-between;"><span>🫓 Per Pita:</span><span>₹${(d / totalPitas).toFixed(2)}</span></div>
+      </div>`;
+                dynamicDiv.innerHTML = html;
+                attachEvents(dynamicDiv, 'pita', items);
+            }
+
+            function renderIngredientsOnly(batches) {
+                let items = scale(PITA_INGREDIENTS.items, batches);
+                let d = 0; items.forEach(i => d += calc(i.name, i.gram).disc);
+                let totalPitas = PITAS_PER_BATCH * batches;
+                let html = `<h2>🍞 Ingredients Only (${batches} batch${batches > 1 ? 'es' : ''} · ${totalPitas} pitas)</h2>
+      <div class="status-toggle-bar">
+        <button data-action="mark-all-prep">✅ All collected</button>
+        <button data-action="clear-all-prep">❌ None collected</button>
+        <button data-action="mark-all-stock">📦 All in stock</button>
+        <button data-action="clear-all-stock">📦 All out of stock</button>
+      </div><div class="ingredient-list">`;
+                items.forEach(i => html += renderItemRow(i, 'pita'));
+                html += `</div><div class="cost-summary">💰 Total: ₹${d.toFixed(2)} | Per Pita: ₹${(d / totalPitas).toFixed(2)}</div>`;
+                dynamicDiv.innerHTML = html;
+                attachEvents(dynamicDiv, 'pita', items);
+            }
+
+            function renderMethodOnly(batches) {
+                let totalPitas = PITAS_PER_BATCH * batches;
+                let html = `<h2>🔥 Method & Cooking (${totalPitas} pitas)</h2>
+      <div class="method-box"><h3>STEP 1 – Activate Yeast</h3><p style="font-size:0.85rem;">Warm water me sugar aur yeast daalo. 8–10 minute tak foam aane do.</p></div>
+      <div class="method-box"><h3>STEP 2 – Dough Banana</h3><ul><li>Mix dry: Maida, Salt, Milk Powder, Vital Wheat Gluten</li><li>Add: Yogurt, Warm Milk, Honey, Yeast</li><li>Warm water add karte hue soft sticky dough banao</li><li>Olive Oil, Melted Butter add karke 8–10 min knead</li></ul></div>
+      <div class="method-box"><h3>STEP 3 – First Proof</h3><p style="font-size:0.85rem;">Oil laga kar cover karo. 60 min ya double hone tak rest.</p></div>
+      <div class="method-box"><h3>STEP 4 – Divide & Bench Rest</h3><p style="font-size:0.85rem;">${totalPitas} pieces (~${DOUGH_PER_PITA}g each). Round balls. Cover karke 20 min rest.</p></div>
+      <div class="method-box"><h3>STEP 5 – Rolling</h3><p style="font-size:0.85rem;">17–18 cm diameter, 4 mm thickness. Har stroke ke baad ¼ turn.</p></div>
+      <div class="cooking-option"><h4>🍳 Tawa Method</h4><p style="font-size:0.85rem;">Medium-High Heat. 30-40 sec per side. Optional direct flame 5-8 sec for puff.</p></div>
+      <div class="cooking-option"><h4>🔥 Oven Method</h4><p style="font-size:0.85rem;">250°C preheat. 4-5 min bake until puffed & golden.</p></div>
+      <div class="cooking-option"><h4>🧈 Finishing</h4><p style="font-size:0.85rem;">Brush with Melted Butter immediately. Optional: 2-3 drops roasted sesame oil.</p></div>
+      <div class="chef-tips"><h4 style="color:#e5b873;">⭐ Chef Tips</h4><ul><li>Dough slightly sticky = soft pita</li><li>Don't overcook</li><li>Wrap in cloth while cooling</li><li>Reheat 10-15 sec before shawarma assembly</li></ul></div>`;
+                dynamicDiv.innerHTML = html;
+            }
+
+            function renderGuideOnly(batches) {
+                let totalPitas = PITAS_PER_BATCH * batches;
+                let html = `<h2>📏 Pita Size Guide & Tips (${totalPitas} pitas)</h2>
+      <div class="size-guide">
+        <div class="size-item">🍞 Dough per Pita<br><strong>~${DOUGH_PER_PITA}g</strong></div>
+        <div class="size-item">📏 Diameter<br><strong>17–18 cm</strong></div>
+        <div class="size-item">📐 Raw Thickness<br><strong>4 mm</strong></div>
+        <div class="size-item">📐 Cooked Thickness<br><strong>6–7 mm</strong></div>
+        <div class="size-item">⭕ Round Ratio<br><strong>9/10 (90%)</strong></div>
+        <div class="size-item">🫓 Pitas/Batch<br><strong>${totalPitas}</strong></div>
+      </div>
+      <div class="tip-box">
+        <strong>🔑 Pro Rolling Tip:</strong> Belan chalate waqt har roll ke baad dough ko ¼ turn dete raho. Isse pita perfectly round banta hai aur edges smooth rehti hain.
+      </div>
+      <div class="method-box">
+        <h3>📦 Resting & Storage</h3>
+        <ul>
+          <li>Garam pita ko turant clean cotton cloth me wrap karo.</li>
+          <li>Thanda hone ke baad airtight box ya zip bag me rakho.</li>
+        </ul>
+        <div class="size-guide" style="margin-top:0.5rem;">
+          <div class="size-item">🏠 Room Temp<br><strong>1 day</strong></div>
+          <div class="size-item">❄️ Refrigerator<br><strong>3 days</strong></div>
+          <div class="size-item">🧊 Freezer<br><strong>30 days</strong></div>
+        </div>
+      </div>
+      <div class="chef-tips">
+        <h4 style="color:#e5b873;">⭐ Chef Tips</h4>
+        <ul>
+          <li>Dough slightly sticky hona chahiye; hard dough se pita dry banega.</li>
+          <li>Overcook mat karo, warna fold karte waqt toot sakta hai.</li>
+          <li>Pita ko hamesha cloth me wrap karke hi thanda hone do.</li>
+          <li>Shawarma banane se pehle pita ko 10–15 second tawa par reheat kar lo. Isse phir se soft aur flexible ho jayega.</li>
+        </ul>
+      </div>
+      <div class="tip-box">
+        ✔ Ye version commercial kitchen ke liye zyada consistent hai aur tumhare Classic Chicken, Alfam aur Mexican Paneer Shawarma tino ke saath achha perform karega.
+      </div>`;
+                dynamicDiv.innerHTML = html;
+            }
+
+            function renderContent(tab, batches) {
+                if (tab === 'full') renderFullRecipe(batches);
+                else if (tab === 'ingredients') renderIngredientsOnly(batches);
+                else if (tab === 'method') renderMethodOnly(batches);
+                else if (tab === 'guide') renderGuideOnly(batches);
+            }
+
+            function renderSettings() {
+                settingsList.innerHTML = [...ALL_INGREDIENTS].sort().map(name => {
+                    let s = productSettings[name] || { packWeight: '', mrp: '', discounted: '' };
+                    return `<div class="settings-item"><span class="item-name">${name}</span>
+          <input class="set-pack" data-name="${name}" value="${s.packWeight || ''}" placeholder="Pack g" style="width:85px;"><span class="unit-label">g</span>
+          <input class="set-mrp" data-name="${name}" value="${s.mrp || ''}" placeholder="MRP ₹" style="width:85px;">
+          <input class="set-disc" data-name="${name}" value="${s.discounted || ''}" placeholder="Disc ₹" style="width:85px;"></div>`;
+                }).join('');
+            }
+
+            function saveFromUI() {
+                document.querySelectorAll('.settings-item').forEach(el => {
+                    let n = el.querySelector('.set-pack').dataset.name;
+                    let p = parseFloat(el.querySelector('.set-pack').value) || 0;
+                    let m = parseFloat(el.querySelector('.set-mrp').value) || 0;
+                    let d = parseFloat(el.querySelector('.set-disc').value) || 0;
+                    if (p > 0) productSettings[n] = { packWeight: p, mrp: m, discounted: d };
+                    else delete productSettings[n];
+                });
+                saveStore(SETTINGS_KEY, productSettings);
+                settingsOverlay.classList.remove('open');
+                renderContent(currentTab, currentBatches);
+                showToast('✅ Settings saved!');
+            }
+
+            function showToast(msg) {
+                let t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+                document.body.appendChild(t); setTimeout(() => t.remove(), 2000);
+            }
+
+            document.getElementById('applyBtn').addEventListener('click', () => {
+                let q = parseInt(qtyInput.value, 10);
+                if (isNaN(q) || q < 1) q = 1; if (q > 10) q = 10;
+                qtyInput.value = q; currentBatches = q; renderContent(currentTab, currentBatches);
+            });
+
+            document.getElementById('tabFull').addEventListener('click', () => { currentTab = 'full'; updateTabs('full'); renderContent('full', currentBatches); });
+            document.getElementById('tabIngredients').addEventListener('click', () => { currentTab = 'ingredients'; updateTabs('ingredients'); renderContent('ingredients', currentBatches); });
+            document.getElementById('tabMethod').addEventListener('click', () => { currentTab = 'method'; updateTabs('method'); renderContent('method', currentBatches); });
+            document.getElementById('tabGuide').addEventListener('click', () => { currentTab = 'guide'; updateTabs('guide'); renderContent('guide', currentBatches); });
+
+            document.getElementById('settingsBtn').addEventListener('click', () => { renderSettings(); settingsOverlay.classList.add('open'); });
+            document.getElementById('closeSettings').addEventListener('click', () => settingsOverlay.classList.remove('open'));
+            document.getElementById('saveSettings').addEventListener('click', saveFromUI);
+            settingsOverlay.addEventListener('click', e => { if (e.target === settingsOverlay) settingsOverlay.classList.remove('open'); });
+
+            updateTabs('full');
+            renderContent('full', 1);
+        })();
+    </script>
+</body>
+
+</html>

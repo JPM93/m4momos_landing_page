@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Chef-Level Tandoori Masala • MFM V1.0</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶️</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a120b 0%, #1e1810 100%);
+            min-height: 100vh;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-container {
+            max-width: 900px;
+            width: 100%;
+            background: #fef9f0;
+            border-radius: 3rem 3rem 2.5rem 2.5rem;
+            box-shadow: 0 30px 50px rgba(180, 100, 20, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+            padding: 2rem 1.8rem;
+            border: 2px solid #d97706;
+        }
+
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #92400e;
+            text-shadow: 2px 2px 0 #fde68a;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subhead {
+            text-align: center;
+            color: #78350f;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: #fef3c7;
+            display: inline-block;
+            padding: 0.3rem 1.8rem;
+            border-radius: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            font-size: 0.9rem;
+            border: 1px solid #fbbf24;
+        }
+
+        .control-panel {
+            background: #1c1510;
+            border-radius: 2rem;
+            padding: 1.5rem 1.2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6), 0 10px 15px rgba(180, 100, 20, 0.3);
+            color: #f5f5f4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #292524;
+            padding: 0.5rem 1.2rem;
+            border-radius: 3rem;
+        }
+
+        .input-group label {
+            font-weight: 700;
+            color: #fde68a;
+            font-size: 1.2rem;
+        }
+
+        .input-group input {
+            width: 85px;
+            padding: 0.7rem 0.5rem;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: #fef7ed;
+            border: 2px solid #d97706;
+            border-radius: 1.5rem;
+            color: #78350f;
+            outline: none;
+        }
+
+        .btn {
+            background: linear-gradient(to bottom, #fbbf24, #d97706);
+            border: none;
+            color: #1c1510;
+            font-weight: 800;
+            padding: 0.75rem 1.8rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.5);
+            border: 1px solid #fde68a;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to bottom, #fcd34d, #b45309);
+            transform: translateY(-1px);
+        }
+
+        .btn-settings {
+            background: #4b5563;
+            border-color: #9ca3af;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-settings:hover {
+            background: #6b7280;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1.5rem 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: #d6d3d1;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: #44403c;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .tab.active {
+            background: #b45309;
+            color: white;
+            box-shadow: 0 0 18px #fbbf24;
+        }
+
+        .tab.masala-active {
+            background: #92400e;
+            box-shadow: 0 0 20px #d97706;
+        }
+
+        .recipe-card {
+            background: #fffbf0;
+            border-radius: 2rem;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25);
+            border: 1px solid #fbbf24;
+        }
+
+        .ingredient-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .ing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffffd6;
+            padding: 0.5rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #fbbf24;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .ing-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .ing-name {
+            font-weight: 600;
+            color: #3b2f1e;
+            min-width: 130px;
+        }
+
+        .ing-qty {
+            font-weight: 800;
+            background: #fef3c7;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            color: #92400e;
+            font-size: 0.85rem;
+        }
+
+        .ing-cost {
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 0.15rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.6rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            background: #d1d5db;
+            color: #374151;
+            border: 1px solid transparent;
+            margin-left: 0.3rem;
+        }
+
+        .status-badge.available {
+            background: #bbf7d0;
+            color: #166534;
+            border-color: #86efac;
+        }
+
+        .status-badge.not-available {
+            background: #fecaca;
+            color: #991b1b;
+            border-color: #fca5a5;
+        }
+
+        .cost-summary {
+            background: #fffbeb;
+            border: 2px solid #d97706;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0;
+            font-weight: 600;
+            color: #78350f;
+        }
+
+        .total-cost-box {
+            background: linear-gradient(135deg, #1c1510, #292524);
+            color: #fbbf24;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            border: 2px solid #d97706;
+        }
+
+        .step-container {
+            background: #fff7ed;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #fbbf24;
+        }
+
+        .status-toggle-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .status-toggle-bar button {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 0.25rem 0.8rem;
+            border-radius: 1.5rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.6rem;
+            color: #92400e;
+            border-left: 6px solid #d97706;
+            padding-left: 0.8rem;
+            background: linear-gradient(to right, #fef9c3, transparent);
+        }
+
+        .tip-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+            color: #78350f;
+        }
+
+        .method-box {
+            background: #fff7ed;
+            border: 2px solid #d97706;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+        }
+
+        .method-box h3 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-box ol {
+            padding-left: 1.5rem;
+            color: #3b2f1e;
+        }
+
+        .method-box ol li {
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+
+        .benefit-item {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 0.8rem;
+            padding: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #78350f;
+            text-align: center;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #92400e;
+            margin-top: 1rem;
+        }
+
+        .settings-modal {
+            scrollbar-width: thin;
+            scrollbar-color: #d97706 #fef3c7;
+        }
+
+        .settings-modal::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .settings-modal::-webkit-scrollbar-track {
+            background: #fef3c7;
+            border-radius: 1rem;
+        }
+
+        .settings-modal::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #fbbf24, #d97706);
+            border-radius: 1rem;
+            border: 2px solid #fef3c7;
+        }
+
+        .settings-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .settings-overlay.open {
+            display: flex;
+        }
+
+        .settings-modal {
+            background: #fff7ed;
+            border-radius: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
+            border: 2px solid #d97706;
+        }
+
+        .settings-modal h2 {
+            color: #92400e;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #b91c1c;
+        }
+
+        .settings-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.7rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            align-items: center;
+            border: 1px solid #fbbf24;
+        }
+
+        .item-name {
+            font-weight: 600;
+            flex: 1;
+            min-width: 160px;
+            color: #3b2f1e;
+        }
+
+        .settings-item input {
+            width: 85px;
+            padding: 0.4rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.8rem;
+            text-align: center;
+        }
+
+        .unit-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1c1510;
+            color: #fbbf24;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            z-index: 9999;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <h1>⭐ CHEF-LEVEL TANDOORI MASALA</h1>
+        <div style="text-align:center"><span class="subhead">~200g Batch · 3-4 Month Shelf Life · Prep Checklist</span>
+        </div>
+
+        <div class="control-panel">
+            <div class="input-group">
+                <label>⭐</label>
+                <input type="number" id="masalaBatches" value="1" min="1" max="10" step="1">
+                <span style="color:#fde68a; font-weight:bold;">Batch(es)</span>
+            </div>
+            <button class="btn" id="applyBtn"><span>🔄</span> Calculate</button>
+            <button class="btn btn-settings" id="settingsBtn">⚙️ Price Settings</button>
+        </div>
+
+        <div class="tabs" id="tabContainer">
+            <button id="tabFull" class="tab active masala-active">⭐ Full Recipe</button>
+            <button id="tabWhole" class="tab">🌶 Whole Spices</button>
+            <button id="tabPowder" class="tab">🧂 Powder Spices</button>
+            <button id="tabMethod" class="tab">📋 Method</button>
+        </div>
+
+        <div id="dynamicRecipe" class="recipe-card"></div>
+        <div class="footer-note">⭐ Low flame roast 45-50 sec · Airtight glass jar · Stronger aroma over time</div>
+    </div>
+
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <h2>⚙️ Ingredient Price Settings <button class="close-btn" id="closeSettings">✕</button></h2>
+            <div id="settingsList"></div>
+            <button class="btn" id="saveSettings" style="margin-top:1rem;">💾 Save & Apply</button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const BASE_BATCH = 1;
+            const BASE_YIELD = 200;
+
+            const dynamicDiv = document.getElementById('dynamicRecipe');
+            const qtyInput = document.getElementById('masalaBatches');
+            const settingsOverlay = document.getElementById('settingsOverlay');
+            const settingsList = document.getElementById('settingsList');
+
+            const WHOLE_SPICES = {
+                name: "🌶 Whole Spices (Roast & Grind)",
+                items: [
+                    { name: "Jeera (Cumin)", gram: 20 },
+                    { name: "Dhania Seeds", gram: 25 },
+                    { name: "Black Pepper", gram: 8 },
+                    { name: "Cloves (Laung)", gram: 4 },
+                    { name: "Green Cardamom", gram: 4 },
+                    { name: "Cinnamon Stick", gram: 6 },
+                    { name: "Mace (Javitri)", gram: 2 },
+                    { name: "Bay Leaf", gram: 2 },
+                    { name: "Kashmiri Red Chillies Whole", gram: 15 },
+                    { name: "Dry Red Hot Chillies Whole (Guntur)", gram: 10 }
+                ]
+            };
+
+            const POWDER_SPICES = {
+                name: "🧂 Powder Spices (Add after grinding)",
+                items: [
+                    { name: "Garlic Powder", gram: 10 },
+                    { name: "Ginger Powder", gram: 10 },
+                    { name: "Turmeric", gram: 6 },
+                    { name: "Dry Mango Powder (Amchur)", gram: 8 },
+                    { name: "Red Chilli Powder Kashmiri", gram: 15 },
+                    { name: "Smoked Paprika", gram: 8 },
+                    { name: "Rock Salt / Sendha Namak", gram: 10 },
+                    { name: "Black Salt", gram: 5 },
+                    { name: "Kasuri Methi (Crushed)", gram: 8 },
+                    { name: "Sugar", gram: 5 }
+                ]
+            };
+
+            const ALL_ITEMS = [...WHOLE_SPICES.items, ...POWDER_SPICES.items];
+            const ALL_INGREDIENTS = new Set();
+            ALL_ITEMS.forEach(i => ALL_INGREDIENTS.add(i.name));
+
+            const SETTINGS_KEY = 'tandoori_masala_price_v1';
+            const PREP_KEY = 'tandoori_masala_prep_v1';
+            const STOCK_KEY = 'tandoori_masala_stock_v1';
+
+            function loadStore(k) { try { return JSON.parse(localStorage.getItem(k)) || {}; } catch (_) { return {}; } }
+            function saveStore(k, d) { localStorage.setItem(k, JSON.stringify(d)); }
+            let productSettings = loadStore(SETTINGS_KEY);
+            let prepStore = loadStore(PREP_KEY);
+            let stockStore = loadStore(STOCK_KEY);
+
+            const DEFAULTS = {
+                "Jeera (Cumin)": [100, 55, 50],
+                "Dhania Seeds": [100, 40, 36],
+                "Black Pepper": [100, 80, 72],
+                "Cloves (Laung)": [50, 120, 110],
+                "Green Cardamom": [50, 180, 165],
+                "Cinnamon Stick": [100, 60, 55],
+                "Mace (Javitri)": [25, 200, 185],
+                "Bay Leaf": [50, 30, 28],
+                "Kashmiri Red Chillies Whole": [100, 55, 50],
+                "Dry Red Hot Chillies Whole (Guntur)": [100, 45, 40],
+                "Garlic Powder": [100, 80, 72],
+                "Ginger Powder": [100, 75, 68],
+                "Turmeric": [100, 30, 28],
+                "Dry Mango Powder (Amchur)": [100, 45, 40],
+                "Red Chilli Powder Kashmiri": [100, 60, 55],
+                "Smoked Paprika": [50, 90, 82],
+                "Rock Salt / Sendha Namak": [1000, 35, 32],
+                "Black Salt": [100, 40, 36],
+                "Kasuri Methi (Crushed)": [50, 60, 55],
+                "Sugar": [1000, 50, 45]
+            };
+
+            for (let [k, v] of Object.entries(DEFAULTS)) {
+                if (!productSettings[k]) productSettings[k] = { packWeight: v[0], mrp: v[1], discounted: v[2] };
+            }
+            saveStore(SETTINGS_KEY, productSettings);
+
+            function storeKey(tab, item) { return tab + '::' + item; }
+            function getPrep(t, i) { return !!prepStore[storeKey(t, i)]; }
+            function setPrep(t, i, v) { prepStore[storeKey(t, i)] = v; saveStore(PREP_KEY, prepStore); }
+            function getStock(t, i) { return !!stockStore[storeKey(t, i)]; }
+            function setStock(t, i, v) { stockStore[storeKey(t, i)] = v; saveStore(STOCK_KEY, stockStore); }
+            function toggleStock(t, i) { setStock(t, i, !getStock(t, i)); }
+            function setAllPrep(t, items, v) { items.forEach(i => setPrep(t, i.name, v)); }
+            function setAllStock(t, items, v) { items.forEach(i => setStock(t, i.name, v)); }
+
+            function calc(item, g) {
+                let s = productSettings[item];
+                if (!s || !s.packWeight) return { mrp: 0, disc: 0 };
+                let pm = (s.mrp || 0) / s.packWeight, pd = (s.discounted || s.mrp || 0) / s.packWeight;
+                return { mrp: pm * g, disc: pd * g };
+            }
+            function scale(items, f) { return items.map(i => ({ ...i, gram: parseFloat((i.gram * f).toFixed(2)) })); }
+
+            let currentTab = 'full', currentBatches = 1;
+
+            function updateTabs(active) {
+                document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active', 'masala-active'); });
+                const tabMap = { full: 'tabFull', whole: 'tabWhole', powder: 'tabPowder', method: 'tabMethod' };
+                let el = document.getElementById(tabMap[active]);
+                if (el) {
+                    el.classList.add('active');
+                    if (active === 'full') el.classList.add('masala-active');
+                }
+            }
+
+            function renderItemRow(item, tab) {
+                let prep = getPrep(tab, item.name), stock = getStock(tab, item.name);
+                let c = calc(item.name, item.gram);
+                return `<div class="ing-row"><div class="ing-left">
+        <input type="checkbox" class="ing-checkbox" data-item="${item.name}" data-tab="${tab}" ${prep ? 'checked' : ''}>
+        <span class="ing-name">🧾 ${item.name}</span>
+        <span class="status-badge ${stock ? 'available' : 'not-available'}" data-item="${item.name}" data-tab="${tab}">${stock ? '✅ In Stock' : '❌ Out'}</span>
+      </div><div style="display:flex;align-items:center;gap:0.5rem;">
+        <span class="ing-qty">${item.gram}g</span><span class="ing-cost">₹${c.disc.toFixed(2)}</span>
+      </div></div>`;
+            }
+
+            function attachEvents(container, tab, items) {
+                container.querySelectorAll('.ing-checkbox').forEach(cb => cb.addEventListener('change', function () {
+                    setPrep(this.dataset.tab, this.dataset.item, this.checked); renderContent(currentTab, currentBatches);
+                }));
+                container.querySelectorAll('.status-badge').forEach(b => b.addEventListener('click', function () {
+                    toggleStock(this.dataset.tab, this.dataset.item); renderContent(currentTab, currentBatches);
+                }));
+                ['mark-all-prep', 'clear-all-prep', 'mark-all-stock', 'clear-all-stock'].forEach(action => {
+                    container.querySelector(`[data-action="${action}"]`)?.addEventListener('click', () => {
+                        if (action === 'mark-all-prep') setAllPrep(tab, items, true);
+                        if (action === 'clear-all-prep') setAllPrep(tab, items, false);
+                        if (action === 'mark-all-stock') setAllStock(tab, items, true);
+                        if (action === 'clear-all-stock') setAllStock(tab, items, false);
+                        renderContent(currentTab, currentBatches);
+                    });
+                });
+            }
+
+            function renderFullRecipe(batches) {
+                let wholeItems = scale(WHOLE_SPICES.items, batches);
+                let powderItems = scale(POWDER_SPICES.items, batches);
+                let allItems = [...wholeItems, ...powderItems];
+                let d = 0, m = 0; allItems.forEach(i => { let c = calc(i.name, i.gram); d += c.disc; m += c.mrp; });
+                let totalYield = BASE_YIELD * batches;
+
+                let html = `<h2>⭐ Chef-Level Tandoori Masala <span style="font-size:0.9rem; color:#6b7280;">(~${totalYield}g total)</span></h2>
+      <div class="status-toggle-bar">
+        <button data-action="mark-all-prep">✅ All collected</button>
+        <button data-action="clear-all-prep">❌ None collected</button>
+        <button data-action="mark-all-stock">📦 All in stock</button>
+        <button data-action="clear-all-stock">📦 All out of stock</button>
+      </div>
+
+      <div class="tip-box">
+        📌 <strong>Roasting Tip:</strong> Low flame par 45–50 seconds, jab halka aroma aaye, bas utar lo. Burn nahi hona chahiye.
+      </div>
+
+      <div class="section-title">🌶 Whole Spices (Roast & Grind)</div>
+      <div class="ingredient-list">`;
+                wholeItems.forEach(i => html += renderItemRow(i, 'masala'));
+                html += `</div>
+
+      <div class="section-title">🧂 Powder Spices (Add after grinding)</div>
+      <div class="ingredient-list">`;
+                powderItems.forEach(i => html += renderItemRow(i, 'masala'));
+                html += `</div>
+
+      <div class="cost-summary">
+        💰 Total Masala Cost: ₹${d.toFixed(2)} (MRP ₹${m.toFixed(2)})<br>
+        📐 Per gram: ₹${(d / totalYield).toFixed(3)} | Per 10g: ₹${(d / totalYield * 10).toFixed(2)}
+      </div>
+
+      <div class="method-box">
+        <h3>📋 How to Make It – Step by Step</h3>
+        <ol>
+          <li><strong>STEP 1 — Whole spices roast:</strong> Kadhai low flame par garam karo. Saare whole masale daalo. 45–50 sec tak roast karo — bas aroma aana chahiye. Thanda hone do.</li>
+          <li><strong>STEP 2 — Grind:</strong> Whole spices ko fine powder bana lo. Agar mixer heat ho raha hai, 2–2 seconds ke pulse me grind karo.</li>
+          <li><strong>STEP 3 — Add powder spices:</strong> Ab is grind ki hui powder me garlic, ginger, turmeric, paprika, amchur, salt etc. milao.</li>
+          <li><strong>STEP 4 — Kasuri methi:</strong> Hand crush karke direct masale me sprinkle kar do.</li>
+          <li><strong>STEP 5 — Mix & store:</strong> Airtight glass jar me rakho. Shelf life: 3–4 months. Smell stronger hota rahega time ke sath.</li>
+        </ol>
+      </div>
+
+      <div class="section-title">🔥 WHY THIS MASALA IS PERFECT?</div>
+      <div class="benefits-grid">
+        <div class="benefit-item">✔ 10× Deep Flavor</div>
+        <div class="benefit-item">✔ Natural Coffee-Red Color</div>
+        <div class="benefit-item">✔ Smoke-like Earthy Aroma</div>
+        <div class="benefit-item">✔ Mixes Instantly in Cream/Mayo/Butter</div>
+        <div class="benefit-item">✔ Unbeatable for Chicken Shawarma</div>
+        <div class="benefit-item">✔ Game Changer for Pita Sauces</div>
+      </div>
+
+      <div class="total-cost-box">
+        <div style="display:flex;justify-content:space-between;"><span>🎯 Total Masala Cost:</span><span style="font-size:1.4rem;">₹${d.toFixed(2)}</span></div>
+        <div style="display:flex;justify-content:space-between;"><span>📊 MRP Total:</span><span>₹${m.toFixed(2)}</span></div>
+        <div style="display:flex;justify-content:space-between;"><span>📐 Yield:</span><span>${totalYield}g · Shelf life 3-4 months</span></div>
+      </div>`;
+                dynamicDiv.innerHTML = html;
+                attachEvents(dynamicDiv, 'masala', allItems);
+            }
+
+            function renderWholeSpices(batches) {
+                let items = scale(WHOLE_SPICES.items, batches);
+                let d = 0; items.forEach(i => d += calc(i.name, i.gram).disc);
+                let html = `<h2>🌶 Whole Spices (${batches} batch${batches > 1 ? 'es' : ''})</h2>
+      <div class="tip-box">📌 Low flame par 45–50 seconds roast karo. Burn nahi hona chahiye.</div>
+      <div class="status-toggle-bar">
+        <button data-action="mark-all-prep">✅ All collected</button>
+        <button data-action="clear-all-prep">❌ None collected</button>
+        <button data-action="mark-all-stock">📦 All in stock</button>
+        <button data-action="clear-all-stock">📦 All out of stock</button>
+      </div><div class="ingredient-list">`;
+                items.forEach(i => html += renderItemRow(i, 'whole'));
+                html += `</div><div class="cost-summary">💰 Whole Spices Cost: ₹${d.toFixed(2)}</div>`;
+                dynamicDiv.innerHTML = html;
+                attachEvents(dynamicDiv, 'whole', items);
+            }
+
+            function renderPowderSpices(batches) {
+                let items = scale(POWDER_SPICES.items, batches);
+                let d = 0; items.forEach(i => d += calc(i.name, i.gram).disc);
+                let html = `<h2>🧂 Powder Spices (${batches} batch${batches > 1 ? 'es' : ''})</h2>
+      <div class="status-toggle-bar">
+        <button data-action="mark-all-prep">✅ All collected</button>
+        <button data-action="clear-all-prep">❌ None collected</button>
+        <button data-action="mark-all-stock">📦 All in stock</button>
+        <button data-action="clear-all-stock">📦 All out of stock</button>
+      </div><div class="ingredient-list">`;
+                items.forEach(i => html += renderItemRow(i, 'powder'));
+                html += `</div><div class="cost-summary">💰 Powder Spices Cost: ₹${d.toFixed(2)}</div>`;
+                dynamicDiv.innerHTML = html;
+                attachEvents(dynamicDiv, 'powder', items);
+            }
+
+            function renderMethodOnly(batches) {
+                let html = `<h2>📋 How to Make It – Step by Step</h2>
+      <div class="method-box">
+        <h3>For ${batches} batch${batches > 1 ? 'es' : ''} (~${BASE_YIELD * batches}g)</h3>
+        <ol>
+          <li><strong>STEP 1 — Whole spices roast:</strong> Kadhai low flame par garam karo. Saare whole masale daalo. 45–50 sec tak roast karo — bas aroma aana chahiye. Thanda hone do.</li>
+          <li><strong>STEP 2 — Grind:</strong> Whole spices ko fine powder bana lo. Agar mixer heat ho raha hai, 2–2 seconds ke pulse me grind karo.</li>
+          <li><strong>STEP 3 — Add powder spices:</strong> Ab is grind ki hui powder me garlic, ginger, turmeric, paprika, amchur, salt etc. milao.</li>
+          <li><strong>STEP 4 — Kasuri methi:</strong> Hand crush karke direct masale me sprinkle kar do.</li>
+          <li><strong>STEP 5 — Mix & store:</strong> Airtight glass jar me rakho. Shelf life: 3–4 months. Smell stronger hota rahega time ke sath.</li>
+        </ol>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-item">✔ 10× Deep Flavor</div>
+        <div class="benefit-item">✔ Natural Coffee-Red Color</div>
+        <div class="benefit-item">✔ Smoke-like Earthy Aroma</div>
+        <div class="benefit-item">✔ Mixes Instantly</div>
+        <div class="benefit-item">✔ Unbeatable for Shawarma</div>
+        <div class="benefit-item">✔ Game Changer for Sauces</div>
+      </div>`;
+                dynamicDiv.innerHTML = html;
+            }
+
+            function renderContent(tab, batches) {
+                if (tab === 'full') renderFullRecipe(batches);
+                else if (tab === 'whole') renderWholeSpices(batches);
+                else if (tab === 'powder') renderPowderSpices(batches);
+                else if (tab === 'method') renderMethodOnly(batches);
+            }
+
+            function renderSettings() {
+                settingsList.innerHTML = [...ALL_INGREDIENTS].sort().map(name => {
+                    let s = productSettings[name] || { packWeight: '', mrp: '', discounted: '' };
+                    return `<div class="settings-item"><span class="item-name">${name}</span>
+          <input class="set-pack" data-name="${name}" value="${s.packWeight || ''}" placeholder="Pack g" style="width:85px;"><span class="unit-label">g</span>
+          <input class="set-mrp" data-name="${name}" value="${s.mrp || ''}" placeholder="MRP ₹" style="width:85px;">
+          <input class="set-disc" data-name="${name}" value="${s.discounted || ''}" placeholder="Disc ₹" style="width:85px;"></div>`;
+                }).join('');
+            }
+
+            function saveFromUI() {
+                document.querySelectorAll('.settings-item').forEach(el => {
+                    let n = el.querySelector('.set-pack').dataset.name;
+                    let p = parseFloat(el.querySelector('.set-pack').value) || 0;
+                    let m = parseFloat(el.querySelector('.set-mrp').value) || 0;
+                    let d = parseFloat(el.querySelector('.set-disc').value) || 0;
+                    if (p > 0) productSettings[n] = { packWeight: p, mrp: m, discounted: d };
+                    else delete productSettings[n];
+                });
+                saveStore(SETTINGS_KEY, productSettings);
+                settingsOverlay.classList.remove('open');
+                renderContent(currentTab, currentBatches);
+                showToast('✅ Settings saved!');
+            }
+
+            function showToast(msg) {
+                let t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+                document.body.appendChild(t); setTimeout(() => t.remove(), 2000);
+            }
+
+            document.getElementById('applyBtn').addEventListener('click', () => {
+                let q = parseInt(qtyInput.value, 10);
+                if (isNaN(q) || q < 1) q = 1; if (q > 10) q = 10;
+                qtyInput.value = q; currentBatches = q; renderContent(currentTab, currentBatches);
+            });
+
+            document.getElementById('tabFull').addEventListener('click', () => { currentTab = 'full'; updateTabs('full'); renderContent('full', currentBatches); });
+            document.getElementById('tabWhole').addEventListener('click', () => { currentTab = 'whole'; updateTabs('whole'); renderContent('whole', currentBatches); });
+            document.getElementById('tabPowder').addEventListener('click', () => { currentTab = 'powder'; updateTabs('powder'); renderContent('powder', currentBatches); });
+            document.getElementById('tabMethod').addEventListener('click', () => { currentTab = 'method'; updateTabs('method'); renderContent('method', currentBatches); });
+
+            document.getElementById('settingsBtn').addEventListener('click', () => { renderSettings(); settingsOverlay.classList.add('open'); });
+            document.getElementById('closeSettings').addEventListener('click', () => settingsOverlay.classList.remove('open'));
+            document.getElementById('saveSettings').addEventListener('click', saveFromUI);
+            settingsOverlay.addEventListener('click', e => { if (e.target === settingsOverlay) settingsOverlay.classList.remove('open'); });
+
+            updateTabs('full');
+            renderContent('full', 1);
+        })();
+    </script>
+</body>
+
+</html>

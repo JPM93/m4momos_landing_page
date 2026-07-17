@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>MFM Shawarma • Recipe Collection V1.0</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌯</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a1814 0%, #1e1c18 100%);
+            min-height: 100vh;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-container {
+            max-width: 800px;
+            width: 100%;
+            background: #fdfaf3;
+            border-radius: 3rem 3rem 2.5rem 2.5rem;
+            box-shadow: 0 30px 50px rgba(139, 100, 43, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+            padding: 2rem 1.8rem;
+            border: 2px solid #d4a574;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #8b6914;
+            text-shadow: 2px 2px 0 #fde68a;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #6b4f1d;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: #8b6914;
+            color: #fde68a;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 1.5rem;
+            margin-top: 0.3rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: #fffdf5;
+            border: 2px solid #e5b873;
+            border-radius: 1.5rem;
+            padding: 1.3rem 1rem;
+            text-decoration: none;
+            color: #3b2f1e;
+            transition: all 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(139, 100, 43, 0.25);
+            border-color: #d4a574;
+            background: #fffef9;
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.6rem;
+            transition: transform 0.25s;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.15);
+        }
+
+        .card-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #6b4f1d;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-desc {
+            font-size: 0.78rem;
+            color: #78716c;
+            line-height: 1.3;
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.7rem;
+            border-radius: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge-chicken {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-alfam {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-paneer {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-sauce {
+            background: #fce7f3;
+            color: #9d174d;
+        }
+
+        .badge-masala {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        .badge-bread {
+            background: #fef9e7;
+            color: #8b6914;
+        }
+
+        .badge-paste {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 1rem;
+            color: #8b6914;
+            text-align: center;
+            margin: 1.2rem 0 0.8rem;
+            position: relative;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: #e5b873;
+        }
+
+        .section-title::before {
+            left: 15%;
+        }
+
+        .section-title::after {
+            right: 15%;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #a68a56;
+            margin-top: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .footer-note strong {
+            color: #8b6914;
+        }
+
+        @media (max-width: 600px) {
+            .app-container {
+                padding: 1.5rem 1rem;
+                border-radius: 2rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.7rem;
+            }
+
+            .card {
+                padding: 1rem 0.7rem;
+            }
+
+            .card-icon {
+                font-size: 2.2rem;
+            }
+
+            .card-title {
+                font-size: 0.95rem;
+            }
+
+            .card-desc {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="logo-section">
+            <span class="logo-icon">🌯</span>
+            <h1>MFM SHAWARMA</h1>
+            <p class="subtitle">Complete Recipe Collection for Commercial Kitchen</p>
+            <span class="version-badge">V3.2 • 6 Modules</span>
+        </div>
+
+        <div class="section-title">🍗 SHAWARMA RECIPES</div>
+        <div class="cards-grid">
+            <a href="classic.html" class="card">
+                <span class="card-icon">🍗</span>
+                <span class="card-title">Classic Chicken</span>
+                <span class="card-desc">12 Shawarmas · Garlic & White Sauce · Veg Strategy</span>
+                <span class="card-badge badge-chicken">Chicken</span>
+            </a>
+            <a href="alfam.html" class="card">
+                <span class="card-icon">🔥</span>
+                <span class="card-title">Alfam Shawarma</span>
+                <span class="card-desc">12 Shawarmas · Tandoori Mayo · Veg Strategy</span>
+                <span class="card-badge badge-alfam">Alfam</span>
+            </a>
+            <a href="maxican.html" class="card">
+                <span class="card-icon">🧀</span>
+                <span class="card-title">Mexican Paneer</span>
+                <span class="card-desc">12 Shawarmas · Chipotle Mayo · Veg Strategy</span>
+                <span class="card-badge badge-paneer">Paneer</span>
+            </a>
+        </div>
+
+        <div class="section-title">🧂 SAUCES & CONDIMENTS</div>
+        <div class="cards-grid">
+            <a href="harissa.html" class="card">
+                <span class="card-icon">🌶️</span>
+                <span class="card-title">Fire Harissa Paste</span>
+                <span class="card-desc">~250g · Multi-Heat Levels · Coal Smoked</span>
+                <span class="card-badge badge-paste">Harissa</span>
+            </a>
+            <a href="masala.html" class="card">
+                <span class="card-icon">⭐</span>
+                <span class="card-title">Chef Tandoori Masala</span>
+                <span class="card-desc">~200g · 20 Spices · 3-4 Month Shelf Life</span>
+                <span class="card-badge badge-masala">Masala</span>
+            </a>
+        </div>
+
+        <div class="section-title">🍞 BREAD & BASE</div>
+        <div class="cards-grid">
+            <a href="bread.html" class="card">
+                <span class="card-icon">🫓</span>
+                <span class="card-title">Pita Bread</span>
+                <span class="card-desc">12 Pitas · ~88g each · Tawa & Oven Method</span>
+                <span class="card-badge badge-bread">Bread</span>
+            </a>
+        </div>
+
+        <div class="footer-note">
+            ⭐ All recipes calibrated for <strong>12 shawarmas base</strong> · Scalable quantity input<br>
+            ✅ Prep checklist · 📦 Stock management · 💰 Cost breakdown included<br>
+            <strong>MFM V3.2</strong> · Commercial Kitchen Standard
+        </div>
+    </div>
+</body>
+
+</html>

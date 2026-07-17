@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Fire Harissa Shawarma Paste • MFM V1.0</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a0a0a 0%, #1e0e0e 100%);
+            min-height: 100vh;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-container {
+            max-width: 900px;
+            width: 100%;
+            background: #fef7ed;
+            border-radius: 3rem 3rem 2.5rem 2.5rem;
+            box-shadow: 0 30px 50px rgba(180, 30, 30, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+            padding: 2rem 1.8rem;
+            border: 2px solid #ef4444;
+        }
+
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #991b1b;
+            text-shadow: 2px 2px 0 #fca5a5;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subhead {
+            text-align: center;
+            color: #7f1d1d;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: #fee2e2;
+            display: inline-block;
+            padding: 0.3rem 1.8rem;
+            border-radius: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            font-size: 0.9rem;
+            border: 1px solid #f87171;
+        }
+
+        .control-panel {
+            background: #1c0a0a;
+            border-radius: 2rem;
+            padding: 1.5rem 1.2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6), 0 10px 15px rgba(180, 30, 30, 0.3);
+            color: #f5f5f4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #292524;
+            padding: 0.5rem 1.2rem;
+            border-radius: 3rem;
+        }
+
+        .input-group label {
+            font-weight: 700;
+            color: #fca5a5;
+            font-size: 1.2rem;
+        }
+
+        .input-group input {
+            width: 85px;
+            padding: 0.7rem 0.5rem;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: #fef7ed;
+            border: 2px solid #ef4444;
+            border-radius: 1.5rem;
+            color: #7f1d1d;
+            outline: none;
+        }
+
+        .btn {
+            background: linear-gradient(to bottom, #f87171, #dc2626);
+            border: none;
+            color: white;
+            font-weight: 800;
+            padding: 0.75rem 1.8rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.5);
+            border: 1px solid #fca5a5;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to bottom, #ef4444, #991b1b);
+            transform: translateY(-1px);
+        }
+
+        .btn-settings {
+            background: #4b5563;
+            border-color: #9ca3af;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-settings:hover {
+            background: #6b7280;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1.5rem 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: #d6d3d1;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: #44403c;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .tab.active {
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 0 18px #f87171;
+        }
+
+        .tab.fire-active {
+            background: #b91c1c;
+            box-shadow: 0 0 20px #ef4444;
+        }
+
+        .recipe-card {
+            background: #fffbf0;
+            border-radius: 2rem;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25);
+            border: 1px solid #fca5a5;
+        }
+
+        .ingredient-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .ing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffffd6;
+            padding: 0.5rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #fca5a5;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .ing-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .ing-name {
+            font-weight: 600;
+            color: #3b2f1e;
+            min-width: 130px;
+        }
+
+        .ing-qty {
+            font-weight: 800;
+            background: #fee2e2;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            color: #991b1b;
+            font-size: 0.85rem;
+        }
+
+        .ing-cost {
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 0.15rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.6rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            background: #d1d5db;
+            color: #374151;
+            border: 1px solid transparent;
+            margin-left: 0.3rem;
+        }
+
+        .status-badge.available {
+            background: #bbf7d0;
+            color: #166534;
+            border-color: #86efac;
+        }
+
+        .status-badge.not-available {
+            background: #fecaca;
+            color: #991b1b;
+            border-color: #fca5a5;
+        }
+
+        .cost-summary {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0;
+            font-weight: 600;
+            color: #7f1d1d;
+        }
+
+        .total-cost-box {
+            background: linear-gradient(135deg, #1c0a0a, #292524);
+            color: #fca5a5;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            border: 2px solid #ef4444;
+        }
+
+        .step-container {
+            background: #fff7ed;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #fca5a5;
+        }
+
+        .status-toggle-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .status-toggle-bar button {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 0.25rem 0.8rem;
+            border-radius: 1.5rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .secret-box {
+            background: #1c0a0a;
+            color: #fca5a5;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+            border: 1px solid #ef4444;
+        }
+
+        .method-box {
+            background: #fff7ed;
+            border: 2px solid #f87171;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+        }
+
+        .method-box h3 {
+            color: #991b1b;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-box ol {
+            padding-left: 1.5rem;
+            color: #3b2f1e;
+        }
+
+        .method-box ol li {
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+        }
+
+        .heat-level-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+
+        .heat-level {
+            background: #fef2f2;
+            border: 2px solid #fca5a5;
+            border-radius: 1rem;
+            padding: 0.6rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .heat-level.fire {
+            background: #dc2626;
+            color: white;
+            border-color: #991b1b;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #991b1b;
+            margin-top: 1rem;
+        }
+
+        .settings-modal {
+            scrollbar-width: thin;
+            scrollbar-color: #ef4444 #fee2e2;
+        }
+
+        .settings-modal::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .settings-modal::-webkit-scrollbar-track {
+            background: #fee2e2;
+            border-radius: 1rem;
+        }
+
+        .settings-modal::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f87171, #dc2626);
+            border-radius: 1rem;
+            border: 2px solid #fee2e2;
+        }
+
+        .settings-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .settings-overlay.open {
+            display: flex;
+        }
+
+        .settings-modal {
+            background: #fff7ed;
+            border-radius: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
+            border: 2px solid #ef4444;
+        }
+
+        .settings-modal h2 {
+            color: #991b1b;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #b91c1c;
+        }
+
+        .settings-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.7rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            align-items: center;
+            border: 1px solid #fca5a5;
+        }
+
+        .item-name {
+            font-weight: 600;
+            flex: 1;
+            min-width: 160px;
+            color: #3b2f1e;
+        }
+
+        .settings-item input {
+            width: 85px;
+            padding: 0.4rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.8rem;
+            text-align: center;
+        }
+
+        .unit-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1c0a0a;
+            color: #fca5a5;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            z-index: 9999;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <h1>🔥 FIRE HARISSA SHAWARMA PASTE</h1>
+        <div style="text-align:center"><span class="subhead">~250g Paste · Multi-Level Heat · Prep Checklist</span>
+        </div>
+
+        <div class="control-panel">
+            <div class="input-group">
+                <label>🔥</label>
+                <input type="number" id="pasteBatches" value="1" min="1" max="10" step="1">
+                <span style="color:#fca5a5; font-weight:bold;">Batch(es)</span>
+            </div>
+            <button class="btn" id="applyBtn"><span>🔄</span> Calculate</button>
+            <button class="btn btn-settings" id="settingsBtn">⚙️ Price Settings</button>
+        </div>
+
+        <div class="tabs" id="tabContainer">
+            <button id="tabFull" class="tab active fire-active">🔥 Full Recipe</button>
+            <button id="tabIngredients" class="tab">🥄 Ingredients Only</button>
+            <button id="tabMethod" class="tab">🍳 Cooking Method</button>
+        </div>
+
+        <div id="dynamicRecipe" class="recipe-card"></div>
+        <div class="footer-note">⭐ 12h fridge rest · Coal smoke 45 sec · Shelf life 7-10 days refrigerated</div>
+    </div>
+
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <h2>⚙️ Ingredient Price Settings <button class="close-btn" id="closeSettings">✕</button></h2>
+            <div id="settingsList"></div>
+            <button class="btn" id="saveSettings" style="margin-top:1rem;">💾 Save & Apply</button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const BASE_BATCH = 1;
+            const BASE_YIELD = 250;
+
+            const dynamicDiv = document.getElementById('dynamicRecipe');
+            const qtyInput = document.getElementById('pasteBatches');
+            const settingsOverlay = document.getElementById('settingsOverlay');
+            const settingsList = document.getElementById('settingsList');
+
+            const HARISSA_PASTE = {
+                name: "🔥 Signature Fire Harissa Style Shawarma Paste",
+                items: [
+                    { name: "Tomato Paste", gram: 100 },
+                    { name: "Roasted Red Bell Pepper Puree", gram: 40 },
+                    { name: "Garlic Paste", gram: 15 },
+                    { name: "Kashmiri Chilli Powder", gram: 8 },
+                    { name: "Hot Red Chilli Powder", gram: 3 },
+                    { name: "Crushed Chilli Flakes", gram: 3 },
+                    { name: "Smoked Paprika", gram: 5 },
+                    { name: "Roasted Cumin Powder", gram: 3 },
+                    { name: "Coriander Powder", gram: 2 },
+                    { name: "Black Pepper", gram: 1 },
+                    { name: "Oregano (crushed)", gram: 1 },
+                    { name: "White Vinegar", gram: 8 },
+                    { name: "Lemon Juice", gram: 10 },
+                    { name: "Honey", gram: 5 },
+                    { name: "Worcestershire Sauce", gram: 3 },
+                    { name: "Light Soy Sauce", gram: 3 },
+                    { name: "Salt", gram: 3 },
+                    { name: "Sugar", gram: 2 },
+                    { name: "Sunflower Oil", gram: 20 },
+                    { name: "Water (as needed)", gram: 20 },
+                    { name: "Charcoal (for smoke)", gram: 15 },
+                    { name: "Ghee (for smoke)", gram: 3 }
+                ]
+            };
+
+            const ALL_INGREDIENTS = new Set();
+            HARISSA_PASTE.items.forEach(i => ALL_INGREDIENTS.add(i.name));
+
+            const SETTINGS_KEY = 'harissa_paste_price_v1';
+            const PREP_KEY = 'harissa_paste_prep_v1';
+            const STOCK_KEY = 'harissa_paste_stock_v1';
+
+            function loadStore(k) { try { return JSON.parse(localStorage.getItem(k)) || {}; } catch (_) { return {}; } }
+            function saveStore(k, d) { localStorage.setItem(k, JSON.stringify(d)); }
+            let productSettings = loadStore(SETTINGS_KEY);
+            let prepStore = loadStore(PREP_KEY);
+            let stockStore = loadStore(STOCK_KEY);
+
+            const DEFAULTS = {
+                "Tomato Paste": [200, 55, 50],
+                "Roasted Red Bell Pepper Puree": [300, 80, 72],
+                "Garlic Paste": [250, 60, 55],
+                "Kashmiri Chilli Powder": [100, 60, 55],
+                "Hot Red Chilli Powder": [100, 45, 40],
+                "Crushed Chilli Flakes": [50, 40, 36],
+                "Smoked Paprika": [50, 90, 82],
+                "Roasted Cumin Powder": [100, 60, 55],
+                "Coriander Powder": [100, 50, 45],
+                "Black Pepper": [100, 80, 72],
+                "Oregano (crushed)": [50, 55, 50],
+                "White Vinegar": [500, 55, 50],
+                "Lemon Juice": [200, 60, 55],
+                "Honey": [250, 120, 110],
+                "Worcestershire Sauce": [200, 95, 86],
+                "Light Soy Sauce": [200, 45, 40],
+                "Salt": [1000, 25, 22],
+                "Sugar": [1000, 50, 45],
+                "Sunflower Oil": [1000, 150, 138],
+                "Water (as needed)": [1000, 0, 0],
+                "Charcoal (for smoke)": [1000, 60, 55],
+                "Ghee (for smoke)": [500, 350, 320]
+            };
+
+            for (let [k, v] of Object.entries(DEFAULTS)) {
+                if (!productSettings[k]) productSettings[k] = { packWeight: v[0], mrp: v[1], discounted: v[2] };
+            }
+            saveStore(SETTINGS_KEY, productSettings);
+
+            function storeKey(tab, item) { return tab + '::' + item; }
+            function getPrep(t, i) { return !!prepStore[storeKey(t, i)]; }
+            function setPrep(t, i, v) { prepStore[storeKey(t, i)] = v; saveStore(PREP_KEY, prepStore); }
+            function getStock(t, i) { return !!stockStore[storeKey(t, i)]; }
+            function setStock(t, i, v) { stockStore[storeKey(t, i)] = v; saveStore(STOCK_KEY, stockStore); }
+            function toggleStock(t, i) { setStock(t, i, !getStock(t, i)); }
+            function setAllPrep(t, items, v) { items.forEach(i => setPrep(t, i.name, v)); }
+            function setAllStock(t, items, v) { items.forEach(i => setStock(t, i.name, v)); }
+
+            function calc(item, g) {
+                let s = productSettings[item];
+                if (!s || !s.packWeight) return { mrp: 0, disc: 0 };
+                let pm = (s.mrp || 0) / s.packWeight, pd = (s.discounted || s.mrp || 0) / s.packWeight;
+                return { mrp: pm * g, disc: pd * g };
+            }
+            function scale(items, f) { return items.map(i => ({ ...i, gram: parseFloat((i.gram * f).toFixed(2)) })); }
+
+            let currentTab = 'full', currentBatches = 1;
+
+            function updateTabs(active) {
+                document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active', 'fire-active'); });
+                const tabMap = { full: 'tabFull', ingredients: 'tabIngredients', method: 'tabMethod' };
+                let el = document.getElementById(tabMap[active]);
+                if (el) {
+                    el.classList.add('active');
+                    if (active === 'full') el.classList.add('fire-active');
+                }
+            }
+
+            function renderItemRow(item, tab) {
+                let prep = getPrep(tab, item.name), stock = getStock(tab, item.name);
+                let c = calc(item.name, item.gram);
+                return `<div class="ing-row"><div class="ing-left">
+        <input type="checkbox" class="ing-checkbox" data-item="${item.name}" data-tab="${tab}" ${prep ? 'checked' : ''}>
+        <span class="ing-name">🧾 ${item.name}</span>
+        <span class="status-badge ${stock ? 'available' : 'not-available'}" data-item="${item.name}" data-tab="${tab}">${stock ? '✅ In Stock' : '❌ Out'}</span>
+      </div><div style="display:flex;align-items:center;gap:0.5rem;">
+        <span class="ing-qty">${item.gram}g</span><span class="ing-cost">₹${c.disc.toFixed(2)}</span>
+      </div></div>`;
+            }
+
+            function attachEvents(container, tab, items) {
+                container.querySelectorAll('.ing-checkbox').forEach(cb => cb.addEventListener('change', function () {
+                    setPrep(this.dataset.tab, this.dataset.item, this.checked); renderContent(currentTab, currentBatches);
+                }));
+                container.querySelectorAll('.status-badge').forEach(b => b.addEventListener('click', function () {
+                    toggleStock(this.dataset.tab, this.dataset.item); renderContent(currentTab, currentBatches);
+                }));
+                ['mark-all-prep', 'clear-all-prep', 'mark-all-stock', 'clear-all-stock'].forEach(action => {
+                    container.querySelector(`[data-action="${action}"]`)?.addEventListener('click', () => {
+                        if (action === 'mark-all-prep') setAllPrep(tab, items, true);
+                        if (action === 'clear-all-prep') setAllPrep(tab, items, false);
+                        if (action === 'mark-all-stock') setAllStock(tab, items, true);
+                        if (action === 'clear-all-stock') setAllStock(tab, items, false);
+                        renderContent(currentTab, currentBatches);
+                    });
+                });
+            }
+
+            function renderFullRecipe(batches) {
+                let items = scale(HARISSA_PASTE.items, batches);
+                let d = 0, m = 0; items.forEach(i => { let c = calc(i.name, i.gram); d += c.disc; m += c.mrp; });
+                let totalYield = BASE_YIELD * batches;
+
+                let html = `<h2>${HARISSA_PASTE.name} <span style="font-size:0.9rem; color:#6b7280;">(~${totalYield}g total yield)</span></h2>
+      <div class="status-toggle-bar">
+        <button data-action="mark-all-prep">✅ All collected</button>
+        <button data-action="clear-all-prep">❌ None collected</button>
+        <button data-action="mark-all-stock">📦 All in stock</button>
+        <button data-action="clear-all-stock">📦 All out of stock</button>
+      </div>
+      <div class="heat-level-box">
+        <div class="heat-level">🟢 Mild<br>0g</div>
+        <div class="heat-level">🟡 Medium<br>5g</div>
+        <div class="heat-level">🟠 Spicy<br>8g</div>
+        <div class="heat-level fire">🔥 Fire<br>10-12g</div>
+      </div>
+      <h3 style="color:#991b1b; margin:0.8rem 0 0.5rem;">🥄 Ingredients</h3>
+      <div class="ingredient-list">`;
+                items.forEach(i => html += renderItemRow(i, 'paste'));
+                html += `</div>
+      <div class="cost-summary">
+        💰 Total Paste Cost: ₹${d.toFixed(2)} (MRP ₹${m.toFixed(2)})<br>
+        📐 Per gram: ₹${(d / totalYield).toFixed(3)} | Mild (0g): ₹0 | Medium (5g): ₹${(d / totalYield * 5).toFixed(2)} | Spicy (8g): ₹${(d / totalYield * 8).toFixed(2)} | Fire (12g): ₹${(d / totalYield * 12).toFixed(2)}
+      </div>
+
+      <div class="method-box">
+        <h3>🍳 Cooking Method (9 Steps)</h3>
+        <ol>
+          <li><strong>Step 1:</strong> Pan me 20g Sunflower Oil, medium flame.</li>
+          <li><strong>Step 2:</strong> Garlic paste 15g, 40-50 second bhuno. Brown nahi karna.</li>
+          <li><strong>Step 3:</strong> Roasted Bell Pepper Puree 40g add, 1 minute cook.</li>
+          <li><strong>Step 4:</strong> Tomato Paste 100g add, 4 minute roast. Oil halka separate hone lage.</li>
+          <li><strong>Step 5:</strong> Saare powder spices add, 30 second.</li>
+          <li><strong>Step 6:</strong> Vinegar, Lemon, Honey, Worcestershire, Soy add & mix.</li>
+          <li><strong>Step 7:</strong> Water 15-25g add. Smooth spread consistency tak.</li>
+          <li><strong>Step 8:</strong> 2 minute simmer. Gas band.</li>
+        </ol>
+      </div>
+
+      <div class="secret-box">
+        ⭐ <strong>Step 9 – SECRET Coal Smoke:</strong> Cool hone ke baad, 15g Charcoal + 3g Ghee, only 45 seconds smoke. 12 hours fridge rest – ye step mat skip karna.
+      </div>
+
+      <div class="total-cost-box">
+        <div style="display:flex;justify-content:space-between;"><span>🎯 Total Paste Cost:</span><span style="font-size:1.4rem;">₹${d.toFixed(2)}</span></div>
+        <div style="display:flex;justify-content:space-between;"><span>📊 MRP Total:</span><span>₹${m.toFixed(2)}</span></div>
+        <div style="display:flex;justify-content:space-between;"><span>📐 Yield:</span><span>${totalYield}g (${Math.floor(totalYield / 5)} medium servings)</span></div>
+      </div>`;
+                dynamicDiv.innerHTML = html;
+                attachEvents(dynamicDiv, 'paste', items);
+            }
+
+            function renderIngredientsOnly(batches) {
+                let items = scale(HARISSA_PASTE.items, batches);
+                let d = 0; items.forEach(i => d += calc(i.name, i.gram).disc);
+                let html = `<h2>🥄 Ingredients Only (${batches} batch${batches > 1 ? 'es' : ''})</h2>
+      <div class="status-toggle-bar">
+        <button data-action="mark-all-prep">✅ All collected</button>
+        <button data-action="clear-all-prep">❌ None collected</button>
+        <button data-action="mark-all-stock">📦 All in stock</button>
+        <button data-action="clear-all-stock">📦 All out of stock</button>
+      </div><div class="ingredient-list">`;
+                items.forEach(i => html += renderItemRow(i, 'paste'));
+                html += `</div><div class="cost-summary">💰 Total: ₹${d.toFixed(2)}</div>`;
+                dynamicDiv.innerHTML = html;
+                attachEvents(dynamicDiv, 'paste', items);
+            }
+
+            function renderMethodOnly(batches) {
+                let html = `<h2>🍳 Cooking Method</h2>
+      <div class="method-box">
+        <h3>Step-by-Step (for ${batches} batch${batches > 1 ? 'es' : ''})</h3>
+        <ol>
+          <li><strong>Step 1:</strong> Pan me ${20 * batches}g Sunflower Oil, medium flame.</li>
+          <li><strong>Step 2:</strong> Garlic paste ${15 * batches}g, 40-50 second bhuno. Brown nahi karna.</li>
+          <li><strong>Step 3:</strong> Roasted Bell Pepper Puree ${40 * batches}g add, 1 minute cook.</li>
+          <li><strong>Step 4:</strong> Tomato Paste ${100 * batches}g add, 4 minute roast. Oil halka separate hone lage.</li>
+          <li><strong>Step 5:</strong> Saare powder spices add, 30 second.</li>
+          <li><strong>Step 6:</strong> Vinegar, Lemon, Honey, Worcestershire, Soy add & mix.</li>
+          <li><strong>Step 7:</strong> Water add. Smooth spread consistency tak.</li>
+          <li><strong>Step 8:</strong> 2 minute simmer. Gas band.</li>
+        </ol>
+      </div>
+      <div class="secret-box">
+        ⭐ <strong>Step 9 – SECRET Coal Smoke:</strong> Cool hone ke baad, ${15 * batches}g Charcoal + ${3 * batches}g Ghee, only 45 seconds smoke.
+      </div>
+      <div class="secret-box">
+        🕒 <strong>Final Rest:</strong> Fridge for 12 hours, next day use. Ye step mat skip karna.
+      </div>
+      <div class="heat-level-box">
+        <div class="heat-level">🟢 Mild<br>0g per shawarma</div>
+        <div class="heat-level">🟡 Medium<br>5g per shawarma</div>
+        <div class="heat-level">🟠 Spicy<br>8g per shawarma</div>
+        <div class="heat-level fire">🔥 Fire<br>10-12g per shawarma</div>
+      </div>`;
+                dynamicDiv.innerHTML = html;
+            }
+
+            function renderContent(tab, batches) {
+                if (tab === 'full') renderFullRecipe(batches);
+                else if (tab === 'ingredients') renderIngredientsOnly(batches);
+                else if (tab === 'method') renderMethodOnly(batches);
+            }
+
+            function renderSettings() {
+                settingsList.innerHTML = [...ALL_INGREDIENTS].sort().map(name => {
+                    let s = productSettings[name] || { packWeight: '', mrp: '', discounted: '' };
+                    return `<div class="settings-item"><span class="item-name">${name}</span>
+          <input class="set-pack" data-name="${name}" value="${s.packWeight || ''}" placeholder="Pack g" style="width:85px;"><span class="unit-label">g</span>
+          <input class="set-mrp" data-name="${name}" value="${s.mrp || ''}" placeholder="MRP ₹" style="width:85px;">
+          <input class="set-disc" data-name="${name}" value="${s.discounted || ''}" placeholder="Disc ₹" style="width:85px;"></div>`;
+                }).join('');
+            }
+
+            function saveFromUI() {
+                document.querySelectorAll('.settings-item').forEach(el => {
+                    let n = el.querySelector('.set-pack').dataset.name;
+                    let p = parseFloat(el.querySelector('.set-pack').value) || 0;
+                    let m = parseFloat(el.querySelector('.set-mrp').value) || 0;
+                    let d = parseFloat(el.querySelector('.set-disc').value) || 0;
+                    if (p > 0) productSettings[n] = { packWeight: p, mrp: m, discounted: d };
+                    else delete productSettings[n];
+                });
+                saveStore(SETTINGS_KEY, productSettings);
+                settingsOverlay.classList.remove('open');
+                renderContent(currentTab, currentBatches);
+                showToast('✅ Settings saved!');
+            }
+
+            function showToast(msg) {
+                let t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+                document.body.appendChild(t); setTimeout(() => t.remove(), 2000);
+            }
+
+            document.getElementById('applyBtn').addEventListener('click', () => {
+                let q = parseInt(qtyInput.value, 10);
+                if (isNaN(q) || q < 1) q = 1; if (q > 10) q = 10;
+                qtyInput.value = q; currentBatches = q; renderContent(currentTab, currentBatches);
+            });
+
+            document.getElementById('tabFull').addEventListener('click', () => { currentTab = 'full'; updateTabs('full'); renderContent('full', currentBatches); });
+            document.getElementById('tabIngredients').addEventListener('click', () => { currentTab = 'ingredients'; updateTabs('ingredients'); renderContent('ingredients', currentBatches); });
+            document.getElementById('tabMethod').addEventListener('click', () => { currentTab = 'method'; updateTabs('method'); renderContent('method', currentBatches); });
+
+            document.getElementById('settingsBtn').addEventListener('click', () => { renderSettings(); settingsOverlay.classList.add('open'); });
+            document.getElementById('closeSettings').addEventListener('click', () => settingsOverlay.classList.remove('open'));
+            document.getElementById('saveSettings').addEventListener('click', saveFromUI);
+            settingsOverlay.addEventListener('click', e => { if (e.target === settingsOverlay) settingsOverlay.classList.remove('open'); });
+
+            updateTabs('full');
+            renderContent('full', 1);
+        })();
+    </script>
+</body>
+
+</html>
