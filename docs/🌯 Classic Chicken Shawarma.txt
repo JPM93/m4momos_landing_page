@@ -1,377 +1,62 @@
-🌯 Classic Chicken Shawarma (Final v3.0)
-
-Quantity: 12 Shawarmas
-Chicken Quantity: 1.2 kg
-
-Recommended Chicken:
-	Boneless Skinless Chicken Thigh
-
-🎯 Target Flavor Profile:
-	Juicy
-	Tandoori-Spiced
-	Smoky
-	Savoury
-	Mild Tang
-	Buttery Finish
-	Deep Chicken Flavor
-	Soft & Moist Inside
-
------------------------------------------------------------------------
-
-STEP 1 – First Marination:
-
-	🥄 Ingredients:
-
-		Lemon Juice: 25 g
-
-		Ginger Garlic Paste: 40 g
-
-		Salt: 14 g
-
-	Method:
-
-		Chicken ko large flat pieces me rakho.
-
-		Approx. Thickness:
-			2–2.5 cm
-
-		Lemon Juice,
-		Ginger Garlic Paste
-		aur Salt add karo.
-
-		Chicken ko achhe se coat karo.
-
-	📌 NOTE:
-
-		Mix karke refrigerator me
-		20–30 minutes rest do.
-
-		Chicken ko small cubes me
-		cut mat karo.
-
-		Large pieces Air Fryer me
-		zyada juicy rahenge.
-
------------------------------------------------------------------------
-
-STEP 2 – Main Shawarma Marination:
-
-	🥄 Creamy Base Ingredients:
-
-		Thick Hung Curd: 150 g
-
-		Mayonnaise: 110 g
-
-	---------------------------------------------------------------
-
-	🥄 Fat Ingredients:
-
-		Melted Unsalted Butter: 35 g
-
-		Mustard Oil
-		(Smoked & Completely Cooled): 30 g
-
-	---------------------------------------------------------------
-
-	🥄 Main Spice Ingredients:
-
-		Chef Tandoori Masala: 40 g
-
-		Kashmiri Chilli Powder: 6 g
-
-		Smoked Paprika: 4 g
-
-		Coriander Powder: 3 g
-
-		Cumin Powder: 2 g
-
-		White Pepper Powder: 2 g
-
-		MSG (Ajinomoto): 2 g
-
-		Sugar: 5 g
-
-	---------------------------------------------------------------
-
-	🥄 Moisture & Marinade Binding Ingredients:
-
-		Milk Powder: 15 g
-
-		Corn Flour: 5 g
-
-	---------------------------------------------------------------
-
-	🥄 Aroma Ingredients:
-
-		Garlic Paste: 15 g
-
-		Lemon Juice: 10 g
-
-	---------------------------------------------------------------
-
-	❌ Removed:
-
-		Rice Flour
-
-	📌 REASON:
-
-		Rice Flour Air Fryer me chicken ki
-		outer coating ko unnecessarily dry/crispy
-		kar sakta hai.
-
-		Hume Shawarma chicken soft aur
-		juicy chahiye, fried-style coating nahi.
-
------------------------------------------------------------------------
-
-🥣 Main Marination Method:
-
-	Step 1:
-
-		Hung Curd aur Mayonnaise
-		ko smooth whisk karo.
-
-	Step 2:
-
-		Add:
-
-			Melted Butter
-			Smoked & Cooled Mustard Oil
-
-		Mix well.
-
-	Step 3:
-
-		Add:
-
-			Chef Tandoori Masala
-			Kashmiri Chilli
-			Smoked Paprika
-			Coriander Powder
-			Cumin Powder
-			White Pepper
-			MSG
-			Sugar
-
-		Mix thoroughly.
-
-	Step 4:
-
-		Add:
-
-			Milk Powder
-			Corn Flour
-
-		Mix until completely smooth.
-
-	Step 5:
-
-		Add:
-
-			Garlic Paste
-			Lemon Juice
-
-		Mix well.
-
-	Step 6:
-
-		STEP 1 marinated chicken
-		add karo.
-
-		Har chicken piece ko
-		evenly coat karo.
-
------------------------------------------------------------------------
-
-⏱ Marination Time:
-
-	Minimum:
-		8 Hours
-
-	Recommended:
-		12 Hours
-
-	Best:
-		12–18 Hours
-
-	Temperature:
-		0–4°C Refrigerator
-
-	📌 NOTE:
-
-		Overnight marination recommended.
-
------------------------------------------------------------------------
-
-STEP 3 – Air Fryer Cooking (Juicy Method):
-
-	Preheat:
-
-		Temperature:
-			180°C
-
-		Time:
-			3 Minutes
-
-	---------------------------------------------------------------
-
-	Chicken Placement:
-
-		Chicken ko basket me
-		single layer me arrange karo.
-
-		Pieces ke beech thoda air-flow space rakho.
-
-		Do NOT overcrowd.
-
-	First Cooking:
+🌯 Classic Chicken Shawarma
+
+	Quantity: 12 shawarmas
+	Chicken Quantity: 1.2 kg (12 × 100 g)
+
+	STEP 1 – First Marination:
+		Ingredients:
+			Lemon Juice: 30 g
+			Ginger Garlic Paste: 40 g
+			Salt: 16 g
+		NOTE: Mix karke 20–30 min rest.
+
+	STEP 2 – Main Shawarma Marination:
+		Ingredients:
+			Thick Hung Curd: 150 g
+			Mayonnaise: 110 g
+			Melted Butter: 35 g
+			Mustard Oil (smoked & cooled): 30 g
+			Chef Tandoori Masala: 48 g
+			Kashmiri Chilli Powder: 8 g
+			Smoked Paprika: 5 g
+			Coriander Powder: 8 g
+			Cumin Powder: 5 g
+			White Pepper: 3 g
+			MSG (Ajinomoto): 2 g
+			Lemon Juice: 20 g
+			Sugar: 5 g
+			Milk Powder: 15 g
+			Corn Flour: 8 g
+			Rice Flour: 4 g
+			Garlic Paste: 15 g 
+
+		NOTE: Marinate minimum 8 hours, preferably overnight (12–18 hours).
+
+	STEP 3 - Air Fryer Cooking:
 		Temperature: 180°C
-		Time: 6–7 Minutes
+		Time: Flip after 8/m and cook for more 7/m, rest 2 min and after Butter Brus & 190°C for 1/m
+		Internal Chicken Temperature: 74-76°C
 
-	Flip:
-		Chicken ko flip karo.
-		Very lightly brush with: Melted Butter OR Neutral Oil
+	STEP 4 - Gas Finish:
+		Direct flame for 20-30 seconds each sides.
+		After flame brush 20g butter.
 
-	Second Cooking:
-		Temperature: 180°C
-		Time: Approx. 4–6 Minutes
+	STEP 5 - Coal Smoke(dum):
+		Ingredients:
+			Coal: Food-grade charcoal
+			25-30 g(1 medium piece)
+			Ghee: 4 g
+		NOTE: 4-5/minutes maximum, and after coal 5 minutes rest
 
-	Temperature Check:
-		Thickest chicken piece me food thermometer insert karo.
-		Cook until chicken is safely cooked through.
-		Do not rely only on fixed time;
-		thickness and Air Fryer model can change cooking time.
-
-	Rest: 3–5 Minutes
-
-	📌 IMPORTANT:
-
-		❌ 190°C Final Air Fryer Finish
-		REMOVE kar diya gaya hai.
-		Gas Finish already char aur colour provide karega.
-		Extra high-temperature cooking chicken ko dry karegi.
-
-STEP 4 – Quick Gas Flame Finish:
-
-	Method:
-		Air-fried chicken ko
-		direct gas flame par finish karo.
-
-		Approx.: 10–15 Seconds Each Side
-
-	🎯 Goal:
-		Light Char
-		Grilled Aroma
-		NOT Additional Cooking
-
-	After Flame Brush:
-		Melted Unsalted Butter: 10–12 g
-
-	📌 NOTE:
-		Chicken already cooked hai.
-		Gas flame ka purpose sirf charred aroma dena hai.
-		Chicken ko flame par unnecessarily hold mat karo.
-
-STEP 5 – Coal Smoke (Dum):
-
-	🥄 Ingredients:
-		Food-Grade Charcoal: 25–30g (1 Medium Piece)
-		Ghee: 4 g
-
-	Method:
-		Charcoal ko red hot karo.
-		Chicken ko covered container me rakho.
-		Center me small steel bowl rakho.
-		Hot charcoal bowl me rakho.
-		Charcoal ke upar Ghee daalo.
-		Immediately cover karo.
-
-	Smoke Time: 3–4 Minutes
-
-	After Smoke:
-		Chicken ko: 5 Minutes Rest
-
-	📌 NOTE:
-		Over-smoking mat karo.
-		Chicken me already: Smoked Paprika, Mustard Oil, Gas Char present hai.
-		Coal Smoke ko supporting aroma rakhna hai, dominant flavour nahi.
-
-STEP 6 – Final Juicy Chicken Glaze:
-
-	🥄 Ingredients:
-		Concentrated Chicken Stock: 30 g
-		Unsalted Butter: 12 g
-		Rendered Chicken Fat: 5 g (Optional but Recommended)
-		Chef Tandoori Masala: 3 g
-		MSG: 0.3 g
-		Lemon Juice: 3 g
-
-	Method:
-		Step 1:
-			Rested chicken ko thin shawarma-style slices me cut karo.
-
-		Step 2:
-			Pan ko medium-high heat par heat karo.
-
-		Step 3:
-			Add Chicken Stock, Unsalted Butter and Rendered Chicken Fat Mix until emulsified.
-
-		Step 4:
-			Add Chef Tandoori Masala, MSG
-
-		Step 5:
-			Sliced Chicken add karo.
-			Quickly toss: 20–30 Seconds Maximum
-
-		Step 6:
-			Heat OFF karo.
-			Then add: 3g Lemon Juice & Quick toss.
-
-	📌 IMPORTANT:
-		Chicken ko glaze me dobara cook nahi karna.
-		Sirf glaze se coat karna hai.
-
-⭐ AIR FRYER JUICINESS RULES:
-	✔ Boneless Chicken Thigh Recommended.
-	✔ Chicken ko small cubes me mat kaato.
-	✔ 2–2.5 cm thick pieces use karo.
-	✔ Air Fryer basket overcrowd mat karo.
-	✔ 1.2 kg chicken ko required ho to 2–3 batches me cook karo.
-	✔ Fixed cooking time ko blindly follow mat karo.
-	✔ Thermometer use karo.
-	✔ Extra 190°C browning step mat karo.
-	✔ Gas flame sirf quick char ke liye.
-	✔ Chicken ko cooking ke baad rest zaroor do.
-	✔ Rest ke baad hi slice karo.
-	✔ Sliced chicken ko Chicken Stock Glaze se coat karo.
-	✔ Glaze me maximum 20–30 seconds toss karo.
-
-⭐ Final Flavor Balance:
-
-	Total Lemon Juice:
-		First Marination: 25 g
-		Main Marination: 10 g
-		Final Glaze: 3 g
-		Total: 38 g
-
-	📌 RESULT:
-		Freshness rahegi,
-		lekin chicken unnecessarily
-		tangy nahi hoga.
-
-⭐ Final Commercial Result:
-	Color:
-		Warm Tandoori Red
-	Aroma:
-		Charred, Smoky, Tandoori-Spiced
-	Outside:
-		Light Char, Moist Surface
-	Inside:
-		Soft, Juicy, Succulent
-	Flavor:
-		Deep Chicken, Clean Tandoori Spice, Mild Tang, Savoury Umami, Light Buttery Finish
-	Perfect For:
-		Classic Chicken Shawarma, Arabic Garlic Sauce, Creamy Arabic White Sauc
+	STEP 6 - Final Shawarma Chicken Seasoning:
+		Ingredients:
+			Chicken Stock: 20 g
+			Butter: 15 g
+			Lemon: 5 g
+			Checf Tandoori Masala: 3 g
+			MSG: 0.5 g
+			
+		NOTE: After chicken slices.
 -----------------------------------------------------------------------
 🧄 Signature Arabic Garlic Sauce
 
